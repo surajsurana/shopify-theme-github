@@ -1,0 +1,931 @@
+/* ============================================================
+   K&A — Couture Product Page Styles
+
+   Scoped to body.template-product to prevent side effects on
+   other page types. Below-fold editorial sections are targeted
+   via stable #shopify-section-{key} IDs from product.json.
+
+   Loading: sections/main-product.liquid
+   Fonts:   Cormorant Garamond + Jost (layout/theme.liquid)
+   ============================================================ */
+
+/* ── K&A Design Tokens ──────────────────────────────────────── */
+body.template-product {
+  --ka-bg:        #F7F3EC;   /* warm ivory */
+  --ka-bg-alt:    #EFE8DD;   /* deeper bone */
+  --ka-paper:     #FCFAF6;
+  --ka-ink:       #2A2420;   /* espresso */
+  --ka-ink-soft:  #6E655B;   /* soft taupe */
+  --ka-ink-faint: #9C9389;
+  --ka-line:      #DED5C7;   /* hairline border */
+  --ka-gold:      #9A7B4F;   /* antique gold */
+  --ka-gold-soft: #B99B6E;
+  --ka-rose:      #B6877E;   /* dusty rose, used sparingly */
+  --ka-serif:     'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+  --ka-sans:      'Jost', 'Helvetica Neue', Arial, sans-serif;
+  --ka-ease:      cubic-bezier(.16, .84, .44, 1);
+}
+
+/* ── Page Background ─────────────────────────────────────────── */
+body.template-product {
+  background-color: var(--ka-bg);
+}
+
+/* ── GALLERY: Thumbnail Rail ─────────────────────────────────── */
+/*
+  Dawn thumbnail layout renders:
+  .thumbnail-slider (left rail, slider-component)
+    .thumbnail-list > .thumbnail-list__item × N
+  .product__media-list / viewer (right, main stage)
+*/
+
+body.template-product .thumbnail-slider {
+  width: 8.6rem;
+  flex-shrink: 0;
+}
+
+body.template-product .thumbnail-list {
+  gap: 1.2rem;
+  flex-direction: column;
+}
+
+body.template-product .thumbnail-list__item {
+  width: 8.6rem;
+  height: 11.6rem;
+  flex-shrink: 0;
+}
+
+/* Thumbnail button wrapper */
+body.template-product .thumbnail-list__item button {
+  border: 1px solid transparent;
+  background: var(--ka-bg-alt);
+  padding: 0;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  display: block;
+  transition: border-color 0.45s var(--ka-ease);
+}
+
+/* Thumbnail images */
+body.template-product .thumbnail-list__item button img {
+  width: 8.6rem;
+  height: 11.6rem;
+  object-fit: cover;
+  object-position: center top;
+  opacity: 0.48;
+  transition: opacity 0.45s var(--ka-ease);
+}
+
+/* Active thumbnail */
+body.template-product .thumbnail-list__item.is-active button,
+body.template-product .thumbnail-list__item[aria-current="true"] button {
+  border-color: var(--ka-ink);
+}
+body.template-product .thumbnail-list__item.is-active button img,
+body.template-product .thumbnail-list__item[aria-current="true"] button img {
+  opacity: 1;
+}
+
+/* Hover on non-active */
+body.template-product .thumbnail-list__item:not(.is-active) button:hover {
+  border-color: var(--ka-ink-soft);
+}
+body.template-product .thumbnail-list__item:not(.is-active) button:hover img {
+  opacity: 0.82;
+}
+
+/* Main stage: warm background + subtle hover zoom */
+body.template-product .product__media-list .media,
+body.template-product .product__media-wrapper .media {
+  overflow: hidden;
+  background: var(--ka-bg-alt);
+}
+
+body.template-product .product__media-list .media img,
+body.template-product .product__media-wrapper .media img {
+  transition: transform 1.5s var(--ka-ease), opacity 0.5s var(--ka-ease);
+}
+
+/* Hover zoom (CSS only — lightbox click still works) */
+@media (hover: hover) and (pointer: fine) {
+  body.template-product .product__media-list .media:hover img,
+  body.template-product .product__media-wrapper .media:hover img {
+    transform: scale(1.035);
+  }
+}
+
+/* ── PRODUCT TITLE ───────────────────────────────────────────── */
+body.template-product .product__title h1 {
+  font-family: var(--ka-serif);
+  font-size: 4.6rem;
+  font-weight: 300;
+  line-height: 1.05;
+  letter-spacing: 0.004em;
+  color: var(--ka-ink);
+  margin: 1.0rem 0 1.4rem;
+}
+
+/* Hide the secondary h2 anchor Dawn renders inside product__title */
+body.template-product .product__title a.product__title {
+  display: none;
+}
+
+/* ── EYEBROW — Collection Tag ───────────────────────────────── */
+body.template-product .ka-eyebrow {
+  font-family: var(--ka-sans);
+  font-weight: 400;
+  font-size: 1.1rem;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+  color: var(--ka-gold);
+  margin: 0 0 0.6rem;
+  line-height: 1.6;
+}
+
+/* Vendor block — muted secondary treatment */
+body.template-product .product__text.caption-with-letter-spacing {
+  font-family: var(--ka-sans);
+  font-size: 1.0rem;
+  letter-spacing: 0.28em;
+  color: var(--ka-ink-faint);
+  text-transform: uppercase;
+}
+
+/* ── POEM / ITALIC TAGLINE ───────────────────────────────────── */
+body.template-product .ka-poem {
+  font-family: var(--ka-serif);
+  font-size: 2.0rem;
+  font-style: italic;
+  font-weight: 300;
+  color: var(--ka-ink-soft);
+  line-height: 1.5;
+  max-width: 30ch;
+  margin: 0 0 2.4rem;
+}
+
+/* ── MADE-IN BADGE ───────────────────────────────────────────── */
+body.template-product .ka-made-badge {
+  font-family: var(--ka-sans);
+  font-size: 1.15rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ka-gold);
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  margin: 1.2rem 0 3.0rem;
+  line-height: 1.5;
+}
+
+body.template-product .ka-made-rule {
+  display: inline-block;
+  width: 26px;
+  height: 1px;
+  background: var(--ka-gold);
+  flex-shrink: 0;
+}
+
+/* ── PRICE ───────────────────────────────────────────────────── */
+body.template-product .price .price__regular .price-item--regular,
+body.template-product .price .price__sale .price-item--sale {
+  font-family: var(--ka-serif);
+  font-size: 2.7rem;
+  font-weight: 400;
+  color: var(--ka-ink);
+  line-height: 1.2;
+}
+
+body.template-product .price .price__regular,
+body.template-product .price .price__sale {
+  display: flex;
+  align-items: baseline;
+  gap: 1.4rem;
+  flex-wrap: wrap;
+}
+
+body.template-product .product__tax {
+  font-family: var(--ka-sans);
+  font-size: 1.1rem;
+  letter-spacing: 0.1em;
+  color: var(--ka-ink-faint);
+  text-transform: uppercase;
+  margin-top: 0.4rem;
+}
+
+/* ── VARIANT PICKER — 5-Column Size Grid ────────────────────── */
+/*
+  Dawn button-type picker renders radio inputs + labels
+  inside a fieldset inside .product-form__input--pill.
+*/
+body.template-product .product-form__input--pill fieldset {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0.8rem;
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+body.template-product .product-form__input--pill legend {
+  font-family: var(--ka-sans);
+  font-weight: 400;
+  font-size: 1.1rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ka-ink);
+  margin-bottom: 1.4rem;
+  float: left;
+  width: 100%;
+}
+
+body.template-product .product-form__input--pill input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+body.template-product .product-form__input--pill input[type="radio"] + label,
+body.template-product .product-form__input--pill .btn {
+  font-family: var(--ka-sans);
+  font-size: 1.3rem;
+  letter-spacing: 0.08em;
+  border: 1px solid var(--ka-line);
+  background: var(--ka-paper);
+  padding: 1.4rem 0;
+  text-align: center;
+  cursor: pointer;
+  color: var(--ka-ink-soft);
+  transition: background 0.35s var(--ka-ease), border-color 0.35s var(--ka-ease), color 0.35s var(--ka-ease);
+  display: block;
+  border-radius: 0;
+  width: 100%;
+  line-height: 1.3;
+}
+
+body.template-product .product-form__input--pill input[type="radio"] + label:hover,
+body.template-product .product-form__input--pill .btn:hover {
+  border-color: var(--ka-ink-soft);
+  color: var(--ka-ink);
+}
+
+body.template-product .product-form__input--pill input[type="radio"]:checked + label,
+body.template-product .product-form__input--pill .btn.is-active {
+  background: var(--ka-ink);
+  color: var(--ka-bg);
+  border-color: var(--ka-ink);
+}
+
+body.template-product .product-form__input--pill input[type="radio"]:disabled + label {
+  opacity: 0.3;
+  text-decoration: line-through;
+  cursor: not-allowed;
+}
+
+body.template-product .product-form__input--pill input[type="radio"]:focus-visible + label {
+  outline: 2px solid var(--ka-gold);
+  outline-offset: 2px;
+}
+
+/* ── BUY BUTTONS ─────────────────────────────────────────────── */
+body.template-product .product-form__submit {
+  font-family: var(--ka-sans);
+  font-weight: 400;
+  font-size: 1.2rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  background: var(--ka-ink);
+  color: var(--ka-bg);
+  border: 1px solid var(--ka-ink);
+  border-radius: 0;
+  padding: 1.8rem 3.0rem;
+  min-height: 5.6rem;
+  transition: background 0.5s var(--ka-ease), color 0.5s var(--ka-ease);
+  width: 100%;
+  height: auto;
+}
+
+body.template-product .product-form__submit:hover:not(:disabled) {
+  background: transparent;
+  color: var(--ka-ink);
+}
+
+body.template-product .product-form__submit:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Dynamic checkout */
+body.template-product .shopify-payment-button__button--unbranded {
+  border-radius: 0 !important;
+  font-family: var(--ka-sans) !important;
+  font-size: 1.2rem !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase !important;
+  min-height: 5.6rem !important;
+}
+
+body.template-product .shopify-payment-button__button--branded {
+  border-radius: 0 !important;
+  min-height: 5.6rem !important;
+}
+
+/* ── CONCIERGE CTA (custom_liquid block) ─────────────────────── */
+body.template-product .ka-cta-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  margin-top: 1.1rem;
+}
+
+body.template-product .ka-or-divider {
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+  color: var(--ka-ink-faint);
+  font-family: var(--ka-sans);
+  font-size: 1.0rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  margin: 0.4rem 0;
+}
+
+body.template-product .ka-or-divider::before,
+body.template-product .ka-or-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--ka-line);
+}
+
+body.template-product .ka-concierge-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8em;
+  width: 100%;
+  padding: 1.8rem 3.0rem;
+  background: #FBF6EC;
+  color: var(--ka-ink);
+  border: 1px solid var(--ka-gold-soft);
+  font-family: var(--ka-sans);
+  font-weight: 400;
+  font-size: 1.2rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.5s var(--ka-ease), border-color 0.5s var(--ka-ease), color 0.5s var(--ka-ease);
+}
+
+body.template-product .ka-concierge-btn:hover {
+  background: var(--ka-gold);
+  border-color: var(--ka-gold);
+  color: #fff;
+}
+
+body.template-product .ka-concierge-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--ka-gold);
+  transition: background 0.4s;
+  flex-shrink: 0;
+}
+
+body.template-product .ka-concierge-btn:hover .ka-concierge-dot {
+  background: #fff;
+}
+
+/* ── CONCIERGE MINI CARD ─────────────────────────────────────── */
+body.template-product .ka-concierge-card {
+  margin-top: 2.8rem;
+  border: 1px solid var(--ka-line);
+  background: var(--ka-paper);
+  padding: 2.2rem;
+  display: flex;
+  gap: 1.6rem;
+  align-items: center;
+}
+
+body.template-product .ka-concierge-card__avatar {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--ka-bg-alt);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--ka-serif);
+  font-size: 2.2rem;
+  color: var(--ka-gold);
+  border: 1px solid var(--ka-line);
+}
+
+body.template-product .ka-concierge-card__body {
+  flex: 1;
+}
+
+body.template-product .ka-concierge-card__body b {
+  font-family: var(--ka-sans);
+  font-weight: 400;
+  font-size: 1.1rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ka-ink);
+  display: block;
+}
+
+body.template-product .ka-concierge-card__body p {
+  font-family: var(--ka-serif);
+  font-size: 1.6rem;
+  color: var(--ka-ink-soft);
+  line-height: 1.4;
+  margin: 0.3rem 0 0.8rem;
+}
+
+body.template-product .ka-concierge-card__body a {
+  font-family: var(--ka-sans);
+  font-size: 1.1rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ka-gold);
+  text-decoration: none;
+  border-bottom: 1px solid var(--ka-gold-soft);
+  padding-bottom: 0.2rem;
+}
+
+/* ── ACCORDIONS ──────────────────────────────────────────────── */
+body.template-product .product__accordion.accordion {
+  border-top: 1px solid var(--ka-line);
+  border-bottom: none;
+  margin-top: 3.4rem;
+}
+
+body.template-product .product__accordion details {
+  border-bottom: 1px solid var(--ka-line);
+}
+
+body.template-product .product__accordion summary {
+  font-family: var(--ka-sans);
+  font-size: 1.2rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ka-ink);
+  padding: 2.0rem 0.2rem;
+  cursor: pointer;
+  list-style: none;
+}
+
+body.template-product .product__accordion summary::-webkit-details-marker {
+  display: none;
+}
+
+body.template-product .product__accordion .accordion__title {
+  font-family: var(--ka-sans) !important;
+  font-size: 1.2rem !important;
+  font-weight: 400 !important;
+  letter-spacing: 0.18em !important;
+  text-transform: uppercase;
+  color: var(--ka-ink);
+}
+
+body.template-product .product__accordion .accordion__content {
+  padding: 0 0.2rem 2.4rem;
+  color: var(--ka-ink-soft);
+  font-size: 1.65rem;
+  line-height: 1.65;
+  font-family: var(--ka-serif);
+}
+
+/* ── PRODUCT DESCRIPTION ─────────────────────────────────────── */
+body.template-product .product__description {
+  font-family: var(--ka-serif);
+  font-size: 1.65rem;
+  color: var(--ka-ink-soft);
+  line-height: 1.65;
+  margin-top: 2.4rem;
+}
+
+/* ── FORM LABELS ─────────────────────────────────────────────── */
+body.template-product .form__label {
+  font-family: var(--ka-sans);
+  font-size: 1.1rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ka-ink);
+}
+
+/* ── STICKY MINI-BAR ─────────────────────────────────────────── */
+/*
+  NOTE: Not scoped to body.template-product because the element
+  is position:fixed and needs reliable rendering.
+  The element only exists inside main-product.liquid so it only
+  renders on product pages.
+*/
+
+.ka-minibar {
+  position: fixed;
+  inset-block-start: 0;
+  inset-inline: 0;
+  z-index: 70;
+  background: #FCFAF6;
+  border-bottom: 1px solid #DED5C7;
+  transform: translateY(-120%);
+  transition: transform 0.55s cubic-bezier(.16, .84, .44, 1);
+  pointer-events: none;
+  will-change: transform;
+}
+
+.ka-minibar.ka-minibar--visible {
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.ka-minibar__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: 1.2rem 4rem;
+  max-width: 1500px;
+  margin: 0 auto;
+}
+
+.ka-minibar__left {
+  display: flex;
+  align-items: center;
+  gap: 1.8rem;
+  flex: 1;
+  min-width: 0;
+}
+
+.ka-minibar__thumb {
+  width: 4.6rem;
+  height: 6.0rem;
+  object-fit: cover;
+  object-position: center top;
+  flex-shrink: 0;
+}
+
+.ka-minibar__name {
+  font-family: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+  font-size: 2.1rem;
+  line-height: 1.1;
+  color: #2A2420;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 40ch;
+}
+
+.ka-minibar__price {
+  font-family: 'Jost', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 1.2rem;
+  letter-spacing: 0.12em;
+  color: #6E655B;
+  margin-top: 0.3rem;
+}
+
+.ka-minibar__price .price {
+  display: block !important;
+  font-size: 1.2rem;
+  font-family: 'Jost', 'Helvetica Neue', Arial, sans-serif;
+}
+
+.ka-minibar__right {
+  display: flex;
+  gap: 1.2rem;
+  flex-shrink: 0;
+  align-items: center;
+}
+
+.ka-minibar__btn {
+  font-family: 'Jost', 'Helvetica Neue', Arial, sans-serif;
+  font-weight: 400;
+  font-size: 1.1rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 1.3rem 2.6rem;
+  cursor: pointer;
+  transition: background 0.5s cubic-bezier(.16, .84, .44, 1),
+              color 0.5s cubic-bezier(.16, .84, .44, 1),
+              border-color 0.5s cubic-bezier(.16, .84, .44, 1);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6em;
+  border: 1px solid #2A2420;
+  border-radius: 0;
+  line-height: 1;
+}
+
+.ka-minibar__btn--primary {
+  background: #2A2420;
+  color: #F7F3EC;
+}
+
+.ka-minibar__btn--primary:hover {
+  background: transparent;
+  color: #2A2420;
+}
+
+.ka-minibar__btn--concierge {
+  background: #FBF6EC;
+  color: #2A2420;
+  border-color: #B99B6E;
+}
+
+.ka-minibar__btn--concierge:hover {
+  background: #9A7B4F;
+  border-color: #9A7B4F;
+  color: #fff;
+}
+
+.ka-minibar__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #9A7B4F;
+  transition: background 0.4s;
+  flex-shrink: 0;
+}
+
+.ka-minibar__btn--concierge:hover .ka-minibar__dot {
+  background: #fff;
+}
+
+/* Zero-height sentinel element observed by IntersectionObserver */
+#KAMinibarSentinel {
+  height: 0;
+  visibility: hidden;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+/* ── FLOATING CONCIERGE BUTTON ───────────────────────────────── */
+/* Rendered in main-product.liquid — product pages only */
+
+.ka-float-concierge {
+  position: fixed;
+  inset-block-end: 2.6rem;
+  inset-inline-end: 2.6rem;
+  z-index: 55;
+  background: #2A2420;
+  color: #B99B6E;
+  display: flex;
+  align-items: center;
+  gap: 1.0rem;
+  padding: 1.5rem 2.2rem;
+  border: 1px solid rgba(154, 123, 79, 0.45);
+  box-shadow: 0 14px 34px rgba(42, 36, 32, 0.28);
+  transition: background 0.45s cubic-bezier(.16, .84, .44, 1),
+              transform 0.45s cubic-bezier(.16, .84, .44, 1),
+              color 0.45s cubic-bezier(.16, .84, .44, 1);
+  font-family: 'Jost', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 1.1rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.ka-float-concierge .ka-float-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #9A7B4F;
+  flex-shrink: 0;
+}
+
+.ka-float-concierge:hover {
+  background: #1d1916;
+  transform: translateY(-3px);
+  color: #F4ECDE;
+}
+
+/* ── BELOW-FOLD EDITORIAL SECTIONS ──────────────────────────── */
+/*
+  Targeted via stable section IDs: #shopify-section-{key}
+  where {key} matches the JSON object key in templates/product.json
+*/
+
+/* Designer's Note (custom-liquid output) */
+body.template-product .ka-designer-note {
+  padding: 13rem 4rem;
+  text-align: center;
+  background: var(--ka-bg);
+}
+
+body.template-product .ka-designer-note__inner {
+  max-width: 76rem;
+  margin: 0 auto;
+}
+
+body.template-product .ka-rule {
+  width: 46px;
+  height: 1px;
+  background: var(--ka-gold);
+  opacity: 0.7;
+  margin: 0 auto 2.2rem;
+  border: none;
+  display: block;
+}
+
+body.template-product .ka-designer-note__quote {
+  font-family: var(--ka-serif);
+  font-size: 3.0rem;
+  font-weight: 300;
+  line-height: 1.5;
+  font-style: italic;
+  color: var(--ka-ink);
+  margin: 3.0rem 0 3.4rem;
+  quotes: none;
+}
+
+body.template-product .ka-designer-note__sig {
+  font-family: var(--ka-serif);
+  font-size: 3.0rem;
+  font-style: italic;
+  color: var(--ka-ink);
+  margin-bottom: 0.6rem;
+}
+
+body.template-product .ka-designer-note__sig-sub {
+  font-family: var(--ka-sans);
+  font-size: 1.1rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ka-ink-faint);
+}
+
+/* Craftsmanship Band — image-with-text override */
+#shopify-section-ka_craftsmanship {
+  margin: 0;
+  padding: 0;
+}
+
+#shopify-section-ka_craftsmanship .image-with-text {
+  min-height: 80vh;
+  border-radius: 0 !important;
+}
+
+#shopify-section-ka_craftsmanship .image-with-text__grid {
+  gap: 0;
+  border-radius: 0;
+}
+
+#shopify-section-ka_craftsmanship .image-with-text__media-item {
+  min-height: 60vh;
+}
+
+#shopify-section-ka_craftsmanship .image-with-text__media-item img {
+  object-fit: cover;
+  object-position: center top;
+  height: 100%;
+}
+
+#shopify-section-ka_craftsmanship .image-with-text__text-item {
+  background: #2A2420 !important;
+  color: #EDE4D5 !important;
+  padding: 9vw 6vw;
+  border: none !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#shopify-section-ka_craftsmanship .image-with-text__heading {
+  font-family: 'Cormorant Garamond', Georgia, 'Times New Roman', serif !important;
+  font-size: 6.4rem;
+  font-weight: 300;
+  color: #F4ECDD !important;
+  line-height: 1.0;
+  margin-bottom: 0.6rem;
+}
+
+#shopify-section-ka_craftsmanship .image-with-text__text p,
+#shopify-section-ka_craftsmanship .image-with-text__text {
+  font-family: 'Cormorant Garamond', Georgia, 'Times New Roman', serif !important;
+  font-size: 1.8rem;
+  color: #C9BFAE !important;
+  line-height: 1.7;
+  font-weight: 300;
+  max-width: 42ch;
+  margin-top: 2.4rem;
+}
+
+/* Atelier Process — multicolumn override */
+#shopify-section-ka_atelier_process .multicolumn,
+#shopify-section-ka_atelier_process section {
+  background: #EFE8DD;
+}
+
+#shopify-section-ka_atelier_process .title {
+  font-family: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+  font-size: 4.3rem;
+  font-weight: 300;
+  line-height: 1.1;
+  color: #2A2420;
+}
+
+#shopify-section-ka_atelier_process .multicolumn-card__title {
+  font-family: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+  font-size: 2.5rem;
+  font-weight: 400;
+  color: #2A2420;
+}
+
+#shopify-section-ka_atelier_process .multicolumn-card .rte,
+#shopify-section-ka_atelier_process .multicolumn-card p {
+  font-family: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+  font-size: 1.6rem;
+  color: #6E655B;
+  line-height: 1.6;
+}
+
+/* Concierge CTA — rich-text override */
+#shopify-section-ka_concierge_cta .rich-text {
+  background: #EFE8DD;
+}
+
+#shopify-section-ka_concierge_cta .rich-text__heading {
+  font-family: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+  font-size: 4.6rem;
+  font-weight: 300;
+  line-height: 1.12;
+  color: #2A2420;
+}
+
+#shopify-section-ka_concierge_cta .rich-text__text,
+#shopify-section-ka_concierge_cta .rich-text__text p {
+  font-family: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+  font-size: 1.9rem;
+  font-weight: 300;
+  color: #6E655B;
+  line-height: 1.65;
+}
+
+#shopify-section-ka_concierge_cta .button {
+  font-family: 'Jost', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 1.2rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  border-radius: 0;
+  padding: 1.8rem 4.0rem;
+}
+
+/* ── RESPONSIVE ──────────────────────────────────────────────── */
+
+@media screen and (max-width: 749px) {
+  /* Mini-bar and floating button hidden on mobile */
+  .ka-minibar { display: none; }
+  .ka-float-concierge { display: none; }
+
+  /* 4-column size grid on tablet */
+  body.template-product .product-form__input--pill fieldset {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  body.template-product .product__title h1 {
+    font-size: 3.1rem;
+  }
+
+  body.template-product .ka-poem {
+    font-size: 1.8rem;
+  }
+
+  body.template-product .ka-designer-note {
+    padding: 9rem 2.6rem;
+  }
+
+  body.template-product .ka-designer-note__quote {
+    font-size: 2.4rem;
+  }
+
+  #shopify-section-ka_craftsmanship .image-with-text__heading {
+    font-size: 4.0rem;
+  }
+
+  body.template-product .ka-concierge-card {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 520px) {
+  /* 3-column size grid on small mobile */
+  body.template-product .product-form__input--pill fieldset {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  body.template-product .product__title h1 {
+    font-size: 2.8rem;
+  }
+
+  #shopify-section-ka_craftsmanship .image-with-text__heading {
+    font-size: 3.2rem;
+  }
+}
