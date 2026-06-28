@@ -1,0 +1,123 @@
+{{ 'ka-appointment.css' | asset_url | stylesheet_tag }}
+
+<section class="ka-appointment">
+
+  {%- if section.settings.bg_image != blank -%}
+    <div
+      class="ka-appointment__bg"
+      style="background-image: url('{{ section.settings.bg_image | image_url: width: 1600 }}')"
+      aria-hidden="true"
+    ></div>
+  {%- endif -%}
+
+  <div class="ka-appointment__content">
+    <div class="ka-appointment__ornament" aria-hidden="true"></div>
+
+    {%- if section.settings.eyebrow != blank -%}
+      <span class="ka-appointment__eyebrow scroll-trigger animate--fade-in">{{ section.settings.eyebrow }}</span>
+    {%- endif -%}
+
+    {%- if section.settings.heading != blank -%}
+      <h2 class="ka-appointment__title scroll-trigger animate--fade-in">{{ section.settings.heading }}</h2>
+    {%- endif -%}
+
+    {%- if section.settings.body != blank -%}
+      <p class="ka-appointment__body scroll-trigger animate--fade-in">{{ section.settings.body }}</p>
+    {%- endif -%}
+
+    {%- if section.settings.cta_label != blank and section.settings.cta_url != blank -%}
+      <a href="{{ section.settings.cta_url }}" class="ka-appointment__btn scroll-trigger animate--fade-in">
+        {{ section.settings.cta_label }}
+      </a>
+    {%- endif -%}
+
+    <div class="ka-appointment__details scroll-trigger animate--fade-in">
+      {%- if section.settings.location != blank -%}
+        <div class="ka-appt-detail">
+          <p class="ka-appt-detail__label">Location</p>
+          <p class="ka-appt-detail__value">{{ section.settings.location }}</p>
+        </div>
+      {%- endif -%}
+      {%- if section.settings.hours != blank -%}
+        <div class="ka-appt-detail">
+          <p class="ka-appt-detail__label">Hours</p>
+          <p class="ka-appt-detail__value">{{ section.settings.hours }}</p>
+        </div>
+      {%- endif -%}
+      {%- if section.settings.contact != blank -%}
+        <div class="ka-appt-detail">
+          <p class="ka-appt-detail__label">Contact</p>
+          <p class="ka-appt-detail__value">{{ section.settings.contact }}</p>
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+
+</section>
+
+{% schema %}
+{
+  "name": "KA Appointment CTA",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "bg_image",
+      "label": "Background image (low opacity)"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Mumbai Atelier"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Begin your bridal story. Book a private appointment."
+    },
+    {
+      "type": "textarea",
+      "id": "body",
+      "label": "Body text",
+      "default": "Our studio appointments are intimate, unhurried, and completely personal. Meet Karishma and Ashita — and begin the journey toward your wedding wardrobe."
+    },
+    {
+      "type": "text",
+      "id": "cta_label",
+      "label": "CTA label",
+      "default": "Request an Appointment"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "CTA link",
+      "default": "https://wa.me/919967543087"
+    },
+    {
+      "type": "text",
+      "id": "location",
+      "label": "Location",
+      "default": "Bandra West, Mumbai"
+    },
+    {
+      "type": "text",
+      "id": "hours",
+      "label": "Hours",
+      "default": "Monday – Saturday, 10am – 7pm"
+    },
+    {
+      "type": "text",
+      "id": "contact",
+      "label": "Contact",
+      "default": "+91 99675 43087"
+    }
+  ],
+  "presets": [
+    {
+      "name": "KA Appointment CTA"
+    }
+  ]
+}
+{% endschema %}

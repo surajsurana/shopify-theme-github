@@ -1,0 +1,67 @@
+{{ 'ka-brand-statement.css' | asset_url | stylesheet_tag }}
+
+<section class="ka-brand-statement">
+  <div class="ka-brand-statement__rule scroll-trigger animate--fade-in"></div>
+
+  {%- if section.settings.eyebrow != blank -%}
+    <span class="ka-brand-statement__eyebrow scroll-trigger animate--fade-in">{{ section.settings.eyebrow }}</span>
+  {%- endif -%}
+
+  {%- if section.settings.quote != blank -%}
+    <blockquote class="ka-brand-statement__quote scroll-trigger animate--fade-in">
+      {{ section.settings.quote }}
+    </blockquote>
+  {%- endif -%}
+
+  {%- if section.settings.body != blank -%}
+    <p class="ka-brand-statement__body scroll-trigger animate--fade-in">{{ section.settings.body }}</p>
+  {%- endif -%}
+
+  {%- if section.settings.cta_label != blank and section.settings.cta_url != blank -%}
+    <a href="{{ section.settings.cta_url }}" class="ka-brand-statement__cta scroll-trigger animate--fade-in">
+      {{ section.settings.cta_label }}
+    </a>
+  {%- endif -%}
+</section>
+
+{% schema %}
+{
+  "name": "KA Brand Statement",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow label",
+      "default": "Karishma & Ashita"
+    },
+    {
+      "type": "richtext",
+      "id": "quote",
+      "label": "Brand quote",
+      "default": "<p>\"Every length of silk, every stitch of zari — held to the light of the woman who will wear it.\"</p>"
+    },
+    {
+      "type": "textarea",
+      "id": "body",
+      "label": "Body paragraph",
+      "default": "We are a Mumbai atelier dedicated to the art of bridal dressing. Each piece begins as a conversation and ends as an heirloom — shaped by the woman, never imposed upon her."
+    },
+    {
+      "type": "text",
+      "id": "cta_label",
+      "label": "CTA label"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "CTA link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "KA Brand Statement"
+    }
+  ]
+}
+{% endschema %}

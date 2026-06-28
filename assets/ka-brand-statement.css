@@ -1,0 +1,79 @@
+/* =============================================================
+   KA BRAND STATEMENT — Section CSS
+   ka-brand-statement.css
+   All values pulled from Prototypes/homepage-prototype.html
+   ============================================================= */
+
+.ka-brand-statement {
+  background: var(--ka-canvas);
+  padding: clamp(var(--ka-s10), 12vw, var(--ka-s12)) var(--ka-gutter);
+  text-align: center;
+}
+
+.ka-brand-statement__rule {
+  width: 40px;
+  height: 1px;
+  background: var(--ka-bronze);
+  margin-inline: auto;
+  margin-bottom: var(--ka-s6);
+}
+
+.ka-brand-statement__eyebrow {
+  font-family: var(--ka-font-sans);
+  font-size: var(--ka-t-eyebrow);
+  font-weight: 500;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--ka-bronze);
+  display: block;
+  margin-bottom: var(--ka-s5);
+}
+
+.ka-brand-statement__quote {
+  font-family: var(--ka-font-display);
+  font-size: clamp(1.6rem, 3.2vw, 2.8rem);
+  font-weight: 400;
+  font-style: italic;
+  color: var(--ka-ink);
+  line-height: 1.3;
+  max-width: 860px;
+  margin-inline: auto;
+  letter-spacing: -.01em;
+}
+
+.ka-brand-statement__byline {
+  margin-top: var(--ka-s6);
+  font-size: var(--ka-t-caption, .78rem);
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--ka-bronze);
+  font-weight: 500;
+}
+
+.ka-brand-statement__body {
+  margin-top: var(--ka-s5);
+  max-width: 560px;
+  margin-inline: auto;
+  color: var(--ka-ink-mid);
+  font-size: var(--ka-t-body);
+  line-height: 1.8;
+}
+
+.ka-brand-statement__cta {
+  display: inline-block;
+  margin-top: var(--ka-s7);
+  font-family: var(--ka-font-sans);
+  font-size: .78rem;
+  font-weight: 500;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--ka-bronze-deep);
+  border-bottom: 1px solid var(--ka-metal-line);
+  padding-bottom: 2px;
+  transition: color var(--ka-dur-fast) var(--ka-ease), border-color var(--ka-dur-fast) var(--ka-ease);
+}
+
+.ka-brand-statement__cta:hover {
+  color: var(--ka-bronze);
+  border-color: var(--ka-bronze);
+}

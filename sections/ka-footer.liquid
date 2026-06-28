@@ -1,0 +1,121 @@
+{{ 'ka-footer.css' | asset_url | stylesheet_tag }}
+
+<footer class="ka-footer" role="contentinfo">
+  <div class="ka-footer__inner">
+
+    <div class="ka-footer__grid">
+
+      <!-- Brand column -->
+      <div class="ka-footer-brand">
+        <div class="ka-footer-brand__wordmark">
+          <span class="ka-footer-brand__name">Karishma &amp; Ashita</span>
+          <span class="ka-footer-brand__sub">Bridal Couture &nbsp;&middot;&nbsp; Est. Mumbai</span>
+        </div>
+        {%- if section.settings.tagline != blank -%}
+          <p class="ka-footer-brand__tagline">{{ section.settings.tagline }}</p>
+        {%- endif -%}
+        <div class="ka-footer-brand__social">
+          {%- if section.settings.instagram_url != blank -%}
+            <a href="{{ section.settings.instagram_url }}" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4.5"/><circle cx="17.5" cy="6.5" r=".8" fill="rgba(255,255,255,.6)" stroke="none"/></svg>
+            </a>
+          {%- endif -%}
+          {%- if section.settings.facebook_url != blank -%}
+            <a href="{{ section.settings.facebook_url }}" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            </a>
+          {%- endif -%}
+          {%- if section.settings.youtube_url != blank -%}
+            <a href="{{ section.settings.youtube_url }}" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.96C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="rgba(22,18,14,1)" stroke="none"/></svg>
+            </a>
+          {%- endif -%}
+        </div>
+      </div>
+
+      <!-- Explore column -->
+      <div class="ka-footer-col">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="/collections/new-arrivals">New Arrivals</a></li>
+          <li><a href="/collections/lehengas">Lehengas</a></li>
+          <li><a href="/collections/drapes">Drapes &amp; Sarees</a></li>
+          <li><a href="/collections/anarkalis">Anarkalis</a></li>
+          <li><a href="/collections/indo-western">Indo-Western</a></li>
+          <li><a href="/collections/gowns">Gowns</a></li>
+        </ul>
+      </div>
+
+      <!-- Collections column -->
+      <div class="ka-footer-col">
+        <h4>Collections</h4>
+        <ul>
+          <li><a href="/collections/the-bloom-soiree">The Bloom Soirée</a></li>
+          <li><a href="/collections/the-festive-edit">The Festive Edit</a></li>
+          <li><a href="/collections/chamak">Chamakk</a></li>
+          <li><a href="/collections/barre-oblique">Barre Oblique</a></li>
+          <li><a href="/collections/bestsellers">Bestsellers</a></li>
+        </ul>
+      </div>
+
+      <!-- Atelier column -->
+      <div class="ka-footer-col">
+        <h4>Atelier</h4>
+        <ul>
+          <li><a href="https://wa.me/919967543087">Book Appointment</a></li>
+          <li><a href="/pages/client-diaries">Client Diaries</a></li>
+          <li><a href="/collections/celebrities-influencers">Celebrities</a></li>
+          <li><a href="/pages/customisations">Customisations</a></li>
+          <li><a href="/pages/contact">Contact</a></li>
+          <li><a href="/policies/shipping-policy">Shipping &amp; Returns</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="ka-footer__bottom">
+      <p class="ka-footer__copyright">&copy; {{ 'now' | date: '%Y' }} Karishma &amp; Ashita. All rights reserved.</p>
+      <div class="ka-footer__bottom-links">
+        <a href="/policies/privacy-policy">Privacy Policy</a>
+        <a href="/policies/terms-of-service">Terms of Service</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "KA Footer",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "tagline",
+      "label": "Brand tagline",
+      "default": "An atelier devoted to the Indian bridal woman — her beauty, her joy, her story. Every garment is a collaboration between craft and the woman who wears it."
+    },
+    {
+      "type": "url",
+      "id": "instagram_url",
+      "label": "Instagram URL"
+    },
+    {
+      "type": "url",
+      "id": "facebook_url",
+      "label": "Facebook URL"
+    },
+    {
+      "type": "url",
+      "id": "youtube_url",
+      "label": "YouTube URL"
+    }
+  ],
+  "presets": [
+    {
+      "name": "KA Footer"
+    }
+  ]
+}
+{% endschema %}

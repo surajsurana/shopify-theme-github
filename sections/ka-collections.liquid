@@ -1,0 +1,257 @@
+{{ 'ka-collections.css' | asset_url | stylesheet_tag }}
+
+<section class="ka-collections">
+
+  <div class="ka-collections__header scroll-trigger animate--fade-in">
+    <div class="ka-collections__header-left">
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="ka-collections__eyebrow">{{ section.settings.eyebrow }}</p>
+      {%- endif -%}
+      {%- if section.settings.heading != blank -%}
+        <h2 class="ka-collections__heading">{{ section.settings.heading }}</h2>
+      {%- endif -%}
+    </div>
+    {%- if section.settings.view_all_url != blank -%}
+      <a href="{{ section.settings.view_all_url }}" class="ka-collections__view-all">
+        View all
+        <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+    {%- endif -%}
+  </div>
+
+  <div class="ka-collections__grid">
+
+    {%- comment -%} Card 1 — Featured (spans 2 rows) {%- endcomment -%}
+    <a
+      href="{{ section.settings.card_1_url | default: '#' }}"
+      class="ka-collection-card ka-collection-card--featured scroll-trigger animate--fade-in"
+    >
+      <div class="ka-collection-card__image">
+        {%- if section.settings.card_1_image != blank -%}
+          <img
+            src="{{ section.settings.card_1_image | image_url: width: 1200 }}"
+            alt="{{ section.settings.card_1_name | escape }}"
+            loading="lazy"
+            width="1200"
+            height="1600"
+          >
+        {%- else -%}
+          {{ 'collection-1' | placeholder_svg_tag: 'placeholder-svg' }}
+        {%- endif -%}
+        <div class="ka-collection-card__overlay"></div>
+        <div class="ka-collection-card__info">
+          <p class="ka-collection-card__name">{{ section.settings.card_1_name | default: 'The Bloom Soirée' }}</p>
+          {%- if section.settings.card_1_count != blank -%}
+            <p class="ka-collection-card__count">{{ section.settings.card_1_count }}</p>
+          {%- endif -%}
+          <span class="ka-collection-card__cta">
+            Explore
+            <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </span>
+        </div>
+      </div>
+    </a>
+
+    {%- comment -%} Cards 2–5 (smaller) {%- endcomment -%}
+    {%- assign small_cards = '2,3,4,5' | split: ',' -%}
+    {%- for i in small_cards -%}
+      {%- assign name_key  = 'card_' | append: i | append: '_name' -%}
+      {%- assign count_key = 'card_' | append: i | append: '_count' -%}
+      {%- assign img_key   = 'card_' | append: i | append: '_image' -%}
+      {%- assign url_key   = 'card_' | append: i | append: '_url' -%}
+      <a
+        href="{{ section.settings[url_key] | default: '#' }}"
+        class="ka-collection-card scroll-trigger animate--fade-in"
+      >
+        <div class="ka-collection-card__image">
+          {%- if section.settings[img_key] != blank -%}
+            <img
+              src="{{ section.settings[img_key] | image_url: width: 900 }}"
+              alt="{{ section.settings[name_key] | escape }}"
+              loading="lazy"
+              width="900"
+              height="1200"
+            >
+          {%- else -%}
+            {{ 'collection-2' | placeholder_svg_tag: 'placeholder-svg' }}
+          {%- endif -%}
+          <div class="ka-collection-card__overlay"></div>
+          <div class="ka-collection-card__info">
+            <p class="ka-collection-card__name">{{ section.settings[name_key] }}</p>
+            {%- if section.settings[count_key] != blank -%}
+              <p class="ka-collection-card__count">{{ section.settings[count_key] }}</p>
+            {%- endif -%}
+            <span class="ka-collection-card__cta">
+              Explore
+              <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </span>
+          </div>
+        </div>
+      </a>
+    {%- endfor -%}
+
+  </div>
+
+</section>
+
+{% schema %}
+{
+  "name": "KA Collections Grid",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Current Season"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Section heading",
+      "default": "The Collections"
+    },
+    {
+      "type": "url",
+      "id": "view_all_url",
+      "label": "View all link",
+      "default": "/collections"
+    },
+    {
+      "type": "header",
+      "content": "Featured Card (large, left)"
+    },
+    {
+      "type": "image_picker",
+      "id": "card_1_image",
+      "label": "Card 1 image"
+    },
+    {
+      "type": "text",
+      "id": "card_1_name",
+      "label": "Card 1 collection name",
+      "default": "The Bloom Soirée"
+    },
+    {
+      "type": "text",
+      "id": "card_1_count",
+      "label": "Card 1 item count",
+      "default": "18 Pieces"
+    },
+    {
+      "type": "url",
+      "id": "card_1_url",
+      "label": "Card 1 link"
+    },
+    {
+      "type": "header",
+      "content": "Card 2"
+    },
+    {
+      "type": "image_picker",
+      "id": "card_2_image",
+      "label": "Card 2 image"
+    },
+    {
+      "type": "text",
+      "id": "card_2_name",
+      "label": "Card 2 collection name",
+      "default": "The Festive Edit"
+    },
+    {
+      "type": "text",
+      "id": "card_2_count",
+      "label": "Card 2 item count",
+      "default": "24 Pieces"
+    },
+    {
+      "type": "url",
+      "id": "card_2_url",
+      "label": "Card 2 link"
+    },
+    {
+      "type": "header",
+      "content": "Card 3"
+    },
+    {
+      "type": "image_picker",
+      "id": "card_3_image",
+      "label": "Card 3 image"
+    },
+    {
+      "type": "text",
+      "id": "card_3_name",
+      "label": "Card 3 collection name",
+      "default": "Chamakk"
+    },
+    {
+      "type": "text",
+      "id": "card_3_count",
+      "label": "Card 3 item count",
+      "default": "16 Pieces"
+    },
+    {
+      "type": "url",
+      "id": "card_3_url",
+      "label": "Card 3 link"
+    },
+    {
+      "type": "header",
+      "content": "Card 4"
+    },
+    {
+      "type": "image_picker",
+      "id": "card_4_image",
+      "label": "Card 4 image"
+    },
+    {
+      "type": "text",
+      "id": "card_4_name",
+      "label": "Card 4 collection name",
+      "default": "Barre Oblique"
+    },
+    {
+      "type": "text",
+      "id": "card_4_count",
+      "label": "Card 4 item count",
+      "default": "12 Pieces"
+    },
+    {
+      "type": "url",
+      "id": "card_4_url",
+      "label": "Card 4 link"
+    },
+    {
+      "type": "header",
+      "content": "Card 5"
+    },
+    {
+      "type": "image_picker",
+      "id": "card_5_image",
+      "label": "Card 5 image"
+    },
+    {
+      "type": "text",
+      "id": "card_5_name",
+      "label": "Card 5 collection name",
+      "default": "New Arrivals"
+    },
+    {
+      "type": "text",
+      "id": "card_5_count",
+      "label": "Card 5 item count",
+      "default": "Just Landed"
+    },
+    {
+      "type": "url",
+      "id": "card_5_url",
+      "label": "Card 5 link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "KA Collections Grid"
+    }
+  ]
+}
+{% endschema %}

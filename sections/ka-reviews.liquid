@@ -1,0 +1,170 @@
+{{ 'ka-reviews.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign star_svg = '<svg class="ka-star" viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>'
+-%}
+
+<section class="ka-reviews">
+
+  <div class="ka-reviews__header">
+    {%- if section.settings.eyebrow != blank -%}
+      <p class="ka-reviews__eyebrow scroll-trigger animate--fade-in">{{ section.settings.eyebrow }}</p>
+    {%- endif -%}
+    {%- if section.settings.heading != blank -%}
+      <h2 class="ka-reviews__heading scroll-trigger animate--fade-in">{{ section.settings.heading }}</h2>
+    {%- endif -%}
+  </div>
+
+  <div class="ka-reviews__grid">
+
+    {%- assign reviews = '1,2,3' | split: ',' -%}
+    {%- for i in reviews -%}
+      {%- assign quote_key  = 'review_' | append: i | append: '_quote' -%}
+      {%- assign name_key   = 'review_' | append: i | append: '_name' -%}
+      {%- assign meta_key   = 'review_' | append: i | append: '_meta' -%}
+      {%- assign initials   = section.settings[name_key] | truncate: 2, '' | upcase -%}
+
+      <div class="ka-review-card scroll-trigger animate--fade-in">
+        <div class="ka-review-stars" aria-label="5 out of 5 stars">
+          {{ star_svg }}{{ star_svg }}{{ star_svg }}{{ star_svg }}{{ star_svg }}
+        </div>
+        {%- if section.settings[quote_key] != blank -%}
+          <p class="ka-review-text">"{{ section.settings[quote_key] }}"</p>
+        {%- endif -%}
+        <div class="ka-review-author">
+          <div class="ka-review-avatar" aria-hidden="true">{{ initials }}</div>
+          <div>
+            {%- if section.settings[name_key] != blank -%}
+              <p class="ka-review-name">{{ section.settings[name_key] }}</p>
+            {%- endif -%}
+            {%- if section.settings[meta_key] != blank -%}
+              <p class="ka-review-meta">{{ section.settings[meta_key] }}</p>
+            {%- endif -%}
+          </div>
+        </div>
+      </div>
+    {%- endfor -%}
+
+  </div>
+
+  <div class="ka-reviews__aggregate scroll-trigger animate--fade-in">
+    <div class="ka-review-stars" aria-label="5 stars">
+      {{ star_svg }}{{ star_svg }}{{ star_svg }}{{ star_svg }}{{ star_svg }}
+    </div>
+    {%- if section.settings.aggregate_score != blank -%}
+      <p class="ka-reviews__score">{{ section.settings.aggregate_score }}</p>
+    {%- endif -%}
+    {%- if section.settings.aggregate_label != blank -%}
+      <p class="ka-reviews__aggregate-label">{{ section.settings.aggregate_label }}</p>
+    {%- endif -%}
+  </div>
+
+</section>
+
+{% schema %}
+{
+  "name": "KA Reviews",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Client Words"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Section heading",
+      "default": "What our clients say"
+    },
+    {
+      "type": "header",
+      "content": "Review 1"
+    },
+    {
+      "type": "textarea",
+      "id": "review_1_quote",
+      "label": "Quote",
+      "default": "I have never felt more myself than in my K&A lehenga. They understood exactly what I wanted — and gave me something more beautiful than I had imagined."
+    },
+    {
+      "type": "text",
+      "id": "review_1_name",
+      "label": "Reviewer name",
+      "default": "Neha Agarwal"
+    },
+    {
+      "type": "text",
+      "id": "review_1_meta",
+      "label": "Reviewer meta",
+      "default": "Bride · November 2024 · Delhi"
+    },
+    {
+      "type": "header",
+      "content": "Review 2"
+    },
+    {
+      "type": "textarea",
+      "id": "review_2_quote",
+      "label": "Quote",
+      "default": "The attention to detail was extraordinary. Every fitting felt like they were building the garment around me as a person. Worth every rupee and every moment."
+    },
+    {
+      "type": "text",
+      "id": "review_2_name",
+      "label": "Reviewer name",
+      "default": "Priya Sharma"
+    },
+    {
+      "type": "text",
+      "id": "review_2_meta",
+      "label": "Reviewer meta",
+      "default": "Bride · March 2025 · Mumbai"
+    },
+    {
+      "type": "header",
+      "content": "Review 3"
+    },
+    {
+      "type": "textarea",
+      "id": "review_3_quote",
+      "label": "Quote",
+      "default": "I wore K&A for all four of my wedding events. Every outfit was magnificent. Guests are still talking about the reception lehenga. True artisanship."
+    },
+    {
+      "type": "text",
+      "id": "review_3_name",
+      "label": "Reviewer name",
+      "default": "Ritu Kapoor"
+    },
+    {
+      "type": "text",
+      "id": "review_3_meta",
+      "label": "Reviewer meta",
+      "default": "Client · January 2025 · Bangalore"
+    },
+    {
+      "type": "header",
+      "content": "Aggregate rating"
+    },
+    {
+      "type": "text",
+      "id": "aggregate_score",
+      "label": "Score",
+      "default": "4.9"
+    },
+    {
+      "type": "text",
+      "id": "aggregate_label",
+      "label": "Label",
+      "default": "Based on 200+ verified client reviews"
+    }
+  ],
+  "presets": [
+    {
+      "name": "KA Reviews"
+    }
+  ]
+}
+{% endschema %}

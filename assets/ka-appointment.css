@@ -1,0 +1,137 @@
+/* =============================================================
+   KA APPOINTMENT CTA — Section CSS
+   ka-appointment.css
+   All values pulled from Prototypes/homepage-prototype.html
+   ============================================================= */
+
+.ka-appointment {
+  background: var(--ka-noir);
+  padding: clamp(var(--ka-s10), 12vw, var(--ka-s12)) var(--ka-gutter);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.ka-appointment__bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: .07;
+  pointer-events: none;
+}
+
+.ka-appointment__content {
+  position: relative;
+  z-index: 1;
+}
+
+.ka-appointment__ornament {
+  width: 80px;
+  height: 1px;
+  background: var(--ka-line-on-dark);
+  margin-inline: auto;
+  margin-bottom: var(--ka-s6);
+  position: relative;
+}
+
+.ka-appointment__ornament::before,
+.ka-appointment__ornament::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 4px;
+  background: var(--ka-champagne);
+  opacity: .5;
+}
+
+.ka-appointment__ornament::before { left: -2px; }
+.ka-appointment__ornament::after  { right: -2px; }
+
+.ka-appointment__eyebrow {
+  font-family: var(--ka-font-sans);
+  font-size: var(--ka-t-eyebrow);
+  font-weight: 500;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--ka-champagne);
+  display: block;
+}
+
+.ka-appointment__title {
+  font-family: var(--ka-font-display);
+  font-size: var(--ka-t-h1);
+  font-weight: 400;
+  font-style: italic;
+  color: #fff;
+  line-height: 1.2;
+  max-width: 640px;
+  margin-inline: auto;
+  margin-top: var(--ka-s4);
+}
+
+.ka-appointment__body {
+  margin-top: var(--ka-s5);
+  color: rgba(255,255,255,.6);
+  max-width: 480px;
+  margin-inline: auto;
+  line-height: 1.8;
+}
+
+/* Primary CTA: champagne fill — NOT a ghost button */
+.ka-appointment__btn {
+  display: inline-block;
+  margin-top: var(--ka-s7);
+  padding: var(--ka-s4) var(--ka-s8);
+  background: var(--ka-champagne);
+  color: var(--ka-noir);
+  border: 1px solid var(--ka-champagne);
+  font-family: var(--ka-font-sans);
+  font-size: .78rem;
+  font-weight: 500;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  transition: background var(--ka-dur-fast) var(--ka-ease), color var(--ka-dur-fast) var(--ka-ease), border-color var(--ka-dur-fast) var(--ka-ease);
+}
+
+.ka-appointment__btn:hover {
+  background: #fff;
+  color: var(--ka-noir);
+  border-color: #fff;
+}
+
+.ka-appointment__details {
+  margin-top: var(--ka-s6);
+  display: flex;
+  justify-content: center;
+  gap: var(--ka-s8);
+  flex-wrap: wrap;
+}
+
+.ka-appt-detail {
+  text-align: center;
+}
+
+.ka-appt-detail__label {
+  font-size: .78rem;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--ka-champagne);
+  opacity: .5;
+  font-family: var(--ka-font-sans);
+}
+
+.ka-appt-detail__value {
+  margin-top: var(--ka-s1);
+  font-size: .85rem;
+  color: rgba(255,255,255,.75);
+}
+
+@media (max-width: 600px) {
+  .ka-appointment__details {
+    gap: var(--ka-s5);
+  }
+}

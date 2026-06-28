@@ -1,0 +1,143 @@
+/* =============================================================
+   KA CRAFTSMANSHIP — Section CSS
+   ka-craftsmanship.css
+   All values pulled from Prototypes/homepage-prototype.html
+   ============================================================= */
+
+.ka-craftsmanship {
+  background: var(--ka-blush);
+  padding: clamp(var(--ka-s9), 10vw, var(--ka-s11)) var(--ka-gutter);
+}
+
+.ka-craftsmanship__header {
+  text-align: center;
+  max-width: 640px;
+  margin-inline: auto;
+  margin-bottom: clamp(var(--ka-s7), 7vw, var(--ka-s9));
+}
+
+.ka-craftsmanship__eyebrow {
+  font-family: var(--ka-font-sans);
+  font-size: var(--ka-t-eyebrow);
+  font-weight: 500;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--ka-bronze);
+}
+
+.ka-craftsmanship__heading {
+  font-family: var(--ka-font-display);
+  font-size: var(--ka-t-h2);
+  font-weight: 400;
+  color: var(--ka-ink);
+  line-height: 1.2;
+  margin-top: var(--ka-s3);
+}
+
+.ka-craftsmanship__intro {
+  margin-top: var(--ka-s5);
+  color: var(--ka-ink-mid);
+  line-height: 1.85;
+}
+
+/* Grid */
+.ka-craft-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--ka-s5);
+  max-width: var(--ka-c);
+  margin-inline: auto;
+}
+
+.ka-craft-item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ka-s4);
+}
+
+.ka-craft-item__image {
+  aspect-ratio: 3/4;
+  overflow: hidden;
+  background: var(--ka-ivory);
+}
+
+.ka-craft-item__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform var(--ka-dur-img) var(--ka-ease);
+}
+
+.ka-craft-item:hover .ka-craft-item__image img {
+  transform: scale(1.04);
+}
+
+.ka-craft-item__number {
+  font-family: var(--ka-font-display);
+  font-size: 2.4rem;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--ka-bronze-soft);
+  line-height: 1;
+}
+
+.ka-craft-item__label {
+  font-family: var(--ka-font-sans);
+  font-size: .78rem;
+  font-weight: 500;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--ka-ink);
+  margin-top: var(--ka-s1);
+}
+
+.ka-craft-item__desc {
+  font-size: .85rem;
+  color: var(--ka-ink-mid);
+  line-height: 1.7;
+}
+
+/* CTA below grid */
+.ka-craftsmanship__cta-wrap {
+  text-align: center;
+  margin-top: clamp(var(--ka-s7), 6vw, var(--ka-s8));
+}
+
+.ka-craftsmanship__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ka-s2);
+  font-family: var(--ka-font-sans);
+  font-size: .78rem;
+  font-weight: 500;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--ka-bronze-deep);
+  transition: gap var(--ka-dur-fast) var(--ka-ease), color var(--ka-dur-fast) var(--ka-ease);
+}
+
+.ka-craftsmanship__cta svg {
+  width: 14px;
+  height: 14px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.4;
+}
+
+.ka-craftsmanship__cta:hover {
+  gap: var(--ka-s3);
+  color: var(--ka-bronze);
+}
+
+@media (max-width: 900px) {
+  .ka-craft-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .ka-craft-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}

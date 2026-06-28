@@ -296,3 +296,49 @@ h1, h2, h3, h4, h5, h6,
 .footer__heading {
   color: var(--ka-champagne);
 }
+
+/* ─── FLOATING CONCIERGE BUTTON (site-wide) ─────────────── */
+.ka-concierge-btn {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 500;
+  display: flex;
+  align-items: center;
+  gap: var(--ka-s3);
+  padding: 14px 22px;
+  background: var(--ka-noir);
+  color: var(--ka-champagne);
+  border: 1px solid var(--ka-line-on-dark);
+  font-family: var(--ka-font-sans);
+  font-size: .68rem;
+  font-weight: 400;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  text-decoration: none;
+  box-shadow: var(--ka-shadow-overlay);
+  transition: background var(--ka-dur-fast) var(--ka-ease),
+              color var(--ka-dur-fast) var(--ka-ease),
+              border-color var(--ka-dur-fast) var(--ka-ease);
+}
+
+.ka-concierge-btn:hover {
+  background: var(--ka-champagne);
+  color: var(--ka-noir);
+  border-color: var(--ka-champagne);
+}
+
+.ka-concierge-btn svg {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+  flex-shrink: 0;
+}
+
+@media (max-width: 600px) {
+  .ka-concierge-btn {
+    bottom: 18px;
+    right: 18px;
+    padding: 12px 18px;
+  }
+}
