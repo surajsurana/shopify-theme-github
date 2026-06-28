@@ -534,7 +534,7 @@
     .collection-card__overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(to top, rgba(22,18,14,.58) 0%, transparent 50%);
+      background: linear-gradient(to top, rgba(22,18,14,.82) 0%, rgba(22,18,14,.3) 40%, transparent 68%);
       pointer-events: none;
     }
     .collection-card__info {
@@ -795,7 +795,7 @@
       position: absolute;
       inset: 0;
       background: url('https://karishmaashita.com/cdn/shop/files/KARISHMA_ASHITA_1_JUNE_2025_0968.jpg?v=1751529035&width=1600') center/cover no-repeat;
-      opacity: .12;
+      opacity: .07;
       pointer-events: none;
     }
     .appointment__content { position: relative; z-index: 1; }
@@ -1048,6 +1048,45 @@
       .newsletter-form button { padding: var(--ka-s4); }
       .appointment__details { gap: var(--ka-s5); }
       .hero__title { font-size: clamp(2rem, 8vw, 3rem); }
+    }
+
+    /* ─── FLOATING CONCIERGE BUTTON ─────────────────────────── */
+    .concierge-btn {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      z-index: 500;
+      display: flex;
+      align-items: center;
+      gap: var(--ka-s3);
+      padding: 14px 22px;
+      background: var(--ka-noir);
+      color: var(--ka-champagne);
+      border: 1px solid var(--ka-line-on-dark);
+      font-family: var(--ka-font-sans);
+      font-size: .68rem;
+      font-weight: 400;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      text-decoration: none;
+      box-shadow: var(--ka-shadow-overlay);
+      transition: background var(--ka-dur-fast) var(--ka-ease),
+                  color var(--ka-dur-fast) var(--ka-ease),
+                  border-color var(--ka-dur-fast) var(--ka-ease);
+    }
+    .concierge-btn:hover {
+      background: var(--ka-champagne);
+      color: var(--ka-noir);
+      border-color: var(--ka-champagne);
+    }
+    .concierge-btn svg {
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+      fill: currentColor;
+    }
+    @media (max-width: 600px) {
+      .concierge-btn { bottom: 18px; right: 18px; padding: 12px 18px; }
     }
   </style>
 </head>
@@ -1329,7 +1368,7 @@
       <div class="ka-container">
         <div style="text-align:center">
           <p class="eyebrow reveal">Client Words</p>
-          <h2 class="section-title reveal delay-1" style="margin-top:var(--ka-s3)">What our brides say</h2>
+          <h2 class="section-title reveal delay-1" style="margin-top:var(--ka-s3)">What our clients say</h2>
         </div>
         <div class="reviews-grid">
 
@@ -1346,7 +1385,7 @@
               <div class="review-avatar">NA</div>
               <div>
                 <p class="review-name">Neha Agarwal</p>
-                <p class="review-meta">Married November 2024 · Delhi</p>
+                <p class="review-meta">Bride · November 2024 · Delhi</p>
               </div>
             </div>
           </div>
@@ -1364,7 +1403,7 @@
               <div class="review-avatar">PS</div>
               <div>
                 <p class="review-name">Priya Sharma</p>
-                <p class="review-meta">Married March 2025 · Mumbai</p>
+                <p class="review-meta">Bride · March 2025 · Mumbai</p>
               </div>
             </div>
           </div>
@@ -1382,7 +1421,7 @@
               <div class="review-avatar">RK</div>
               <div>
                 <p class="review-name">Ritu Kapoor</p>
-                <p class="review-meta">Married January 2025 · Bangalore</p>
+                <p class="review-meta">Client · January 2025 · Bangalore</p>
               </div>
             </div>
           </div>
@@ -1397,7 +1436,7 @@
             <svg class="star" style="width:16px;height:16px" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
           </div>
           <p class="aggregate-score">4.9</p>
-          <p class="aggregate-label">Based on 200+ Google Reviews</p>
+          <p class="aggregate-label">Based on 200+ verified client reviews</p>
         </div>
       </div>
     </section>
@@ -1444,6 +1483,18 @@
     </section>
 
   </main>
+
+  <!-- ═══ FLOATING CONCIERGE BUTTON ══════════════════════════ -->
+  <a
+    href="https://wa.me/919967543087"
+    class="concierge-btn"
+    target="_blank"
+    rel="noopener"
+    aria-label="Open WhatsApp concierge"
+  >
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M11.5 2C6.262 2 2 6.262 2 11.5c0 1.687.438 3.27 1.2 4.646L2 22l6.01-1.174A9.463 9.463 0 0 0 11.5 21C16.738 21 21 16.738 21 11.5S16.738 2 11.5 2zm0 17.25a7.737 7.737 0 0 1-3.956-1.084l-.284-.169-2.95.775.787-2.878-.185-.295A7.714 7.714 0 0 1 3.75 11.5C3.75 7.224 7.224 3.75 11.5 3.75s7.75 3.474 7.75 7.75-3.474 7.75-7.75 7.75z"/></svg>
+    Concierge
+  </a>
 
   <!-- ═══ FOOTER ════════════════════════════════════════════ -->
   <footer class="site-footer">
