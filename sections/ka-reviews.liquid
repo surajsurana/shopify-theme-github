@@ -8,10 +8,10 @@
 
   <div class="ka-reviews__header">
     {%- if section.settings.eyebrow != blank -%}
-      <p class="ka-reviews__eyebrow scroll-trigger animate--fade-in">{{ section.settings.eyebrow }}</p>
+      <p class="ka-reviews__eyebrow ka-reveal">{{ section.settings.eyebrow }}</p>
     {%- endif -%}
     {%- if section.settings.heading != blank -%}
-      <h2 class="ka-reviews__heading scroll-trigger animate--fade-in">{{ section.settings.heading }}</h2>
+      <h2 class="ka-reviews__heading ka-reveal">{{ section.settings.heading }}</h2>
     {%- endif -%}
   </div>
 
@@ -24,7 +24,7 @@
       {%- assign meta_key   = 'review_' | append: i | append: '_meta' -%}
       {%- assign initials   = section.settings[name_key] | truncate: 2, '' | upcase -%}
 
-      <div class="ka-review-card scroll-trigger animate--fade-in">
+      <div class="ka-review-card ka-reveal">
         <div class="ka-review-stars" aria-label="5 out of 5 stars">
           {{ star_svg }}{{ star_svg }}{{ star_svg }}{{ star_svg }}{{ star_svg }}
         </div>
@@ -47,7 +47,7 @@
 
   </div>
 
-  <div class="ka-reviews__aggregate scroll-trigger animate--fade-in">
+  <div class="ka-reviews__aggregate ka-reveal">
     <div class="ka-review-stars" aria-label="5 stars">
       {{ star_svg }}{{ star_svg }}{{ star_svg }}{{ star_svg }}{{ star_svg }}
     </div>

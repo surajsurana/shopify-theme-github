@@ -4,13 +4,13 @@
 
   <div class="ka-craftsmanship__header">
     {%- if section.settings.eyebrow != blank -%}
-      <p class="ka-craftsmanship__eyebrow scroll-trigger animate--fade-in">{{ section.settings.eyebrow }}</p>
+      <p class="ka-craftsmanship__eyebrow ka-reveal">{{ section.settings.eyebrow }}</p>
     {%- endif -%}
     {%- if section.settings.heading != blank -%}
-      <h2 class="ka-craftsmanship__heading scroll-trigger animate--fade-in">{{ section.settings.heading }}</h2>
+      <h2 class="ka-craftsmanship__heading ka-reveal">{{ section.settings.heading }}</h2>
     {%- endif -%}
     {%- if section.settings.intro != blank -%}
-      <p class="ka-craftsmanship__intro scroll-trigger animate--fade-in">{{ section.settings.intro }}</p>
+      <p class="ka-craftsmanship__intro ka-reveal">{{ section.settings.intro }}</p>
     {%- endif -%}
   </div>
 
@@ -23,7 +23,7 @@
       {%- assign desc_key  = 'step_' | append: i | append: '_desc' -%}
       {%- assign img_key   = 'step_' | append: i | append: '_image' -%}
       {%- assign num       = numerals[forloop.index0] -%}
-      <div class="ka-craft-item scroll-trigger animate--fade-in">
+      <div class="ka-craft-item ka-reveal">
         <div class="ka-craft-item__image">
           {%- if section.settings[img_key] != blank -%}
             <img
@@ -51,7 +51,7 @@
 
   {%- if section.settings.cta_label != blank and section.settings.cta_url != blank -%}
     <div class="ka-craftsmanship__cta-wrap">
-      <a href="{{ section.settings.cta_url }}" class="ka-craftsmanship__cta scroll-trigger animate--fade-in">
+      <a href="{{ section.settings.cta_url }}" class="ka-craftsmanship__cta ka-reveal">
         {{ section.settings.cta_label }}
         <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
       </a>

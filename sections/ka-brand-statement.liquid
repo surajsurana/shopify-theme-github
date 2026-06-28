@@ -1,25 +1,25 @@
 {{ 'ka-brand-statement.css' | asset_url | stylesheet_tag }}
 
 <section class="ka-brand-statement">
-  <div class="ka-brand-statement__rule scroll-trigger animate--fade-in"></div>
+  <div class="ka-brand-statement__rule ka-reveal"></div>
 
   {%- if section.settings.eyebrow != blank -%}
-    <span class="ka-brand-statement__eyebrow scroll-trigger animate--fade-in">{{ section.settings.eyebrow }}</span>
+    <span class="ka-brand-statement__eyebrow ka-reveal">{{ section.settings.eyebrow }}</span>
   {%- endif -%}
 
   {%- if section.settings.quote != blank -%}
-    <blockquote class="ka-brand-statement__quote scroll-trigger animate--fade-in">
+    <blockquote class="ka-brand-statement__quote ka-reveal">
       {{ section.settings.quote }}
     </blockquote>
     <p class="ka-brand-statement__byline">Karishma &amp; Ashita</p>
   {%- endif -%}
 
   {%- if section.settings.body != blank -%}
-    <p class="ka-brand-statement__body scroll-trigger animate--fade-in">{{ section.settings.body }}</p>
+    <p class="ka-brand-statement__body ka-reveal">{{ section.settings.body }}</p>
   {%- endif -%}
 
   {%- if section.settings.cta_label != blank and section.settings.cta_url != blank -%}
-    <a href="{{ section.settings.cta_url }}" class="ka-brand-statement__cta scroll-trigger animate--fade-in">
+    <a href="{{ section.settings.cta_url }}" class="ka-brand-statement__cta ka-reveal">
       {{ section.settings.cta_label }}
     </a>
   {%- endif -%}

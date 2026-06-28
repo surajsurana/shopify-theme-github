@@ -4,19 +4,19 @@
   <div class="ka-newsletter__inner">
 
     {%- if section.settings.eyebrow != blank -%}
-      <p class="ka-newsletter__eyebrow scroll-trigger animate--fade-in">{{ section.settings.eyebrow }}</p>
+      <p class="ka-newsletter__eyebrow ka-reveal">{{ section.settings.eyebrow }}</p>
     {%- endif -%}
 
     {%- if section.settings.heading != blank -%}
-      <h2 class="ka-newsletter__title scroll-trigger animate--fade-in">{{ section.settings.heading }}</h2>
+      <h2 class="ka-newsletter__title ka-reveal">{{ section.settings.heading }}</h2>
     {%- endif -%}
 
     {%- if section.settings.body != blank -%}
-      <p class="ka-newsletter__body scroll-trigger animate--fade-in">{{ section.settings.body }}</p>
+      <p class="ka-newsletter__body ka-reveal">{{ section.settings.body }}</p>
     {%- endif -%}
 
     <form
-      class="ka-newsletter__form scroll-trigger animate--fade-in"
+      class="ka-newsletter__form ka-reveal"
       action="/contact#contact_form"
       method="post"
       id="ka-newsletter-form"
@@ -38,7 +38,7 @@
     </form>
 
     {%- if section.settings.privacy_note != blank -%}
-      <p class="ka-newsletter__privacy scroll-trigger animate--fade-in">{{ section.settings.privacy_note }}</p>
+      <p class="ka-newsletter__privacy ka-reveal">{{ section.settings.privacy_note }}</p>
     {%- endif -%}
 
   </div>

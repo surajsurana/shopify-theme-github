@@ -14,24 +14,24 @@
     <div class="ka-appointment__ornament" aria-hidden="true"></div>
 
     {%- if section.settings.eyebrow != blank -%}
-      <span class="ka-appointment__eyebrow scroll-trigger animate--fade-in">{{ section.settings.eyebrow }}</span>
+      <span class="ka-appointment__eyebrow ka-reveal">{{ section.settings.eyebrow }}</span>
     {%- endif -%}
 
     {%- if section.settings.heading != blank -%}
-      <h2 class="ka-appointment__title scroll-trigger animate--fade-in">{{ section.settings.heading }}</h2>
+      <h2 class="ka-appointment__title ka-reveal">{{ section.settings.heading }}</h2>
     {%- endif -%}
 
     {%- if section.settings.body != blank -%}
-      <p class="ka-appointment__body scroll-trigger animate--fade-in">{{ section.settings.body }}</p>
+      <p class="ka-appointment__body ka-reveal">{{ section.settings.body }}</p>
     {%- endif -%}
 
     {%- if section.settings.cta_label != blank and section.settings.cta_url != blank -%}
-      <a href="{{ section.settings.cta_url }}" class="ka-appointment__btn scroll-trigger animate--fade-in">
+      <a href="{{ section.settings.cta_url }}" class="ka-appointment__btn ka-reveal">
         {{ section.settings.cta_label }}
       </a>
     {%- endif -%}
 
-    <div class="ka-appointment__details scroll-trigger animate--fade-in">
+    <div class="ka-appointment__details ka-reveal">
       {%- if section.settings.location != blank -%}
         <div class="ka-appt-detail">
           <p class="ka-appt-detail__label">Location</p>

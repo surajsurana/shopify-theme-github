@@ -5,7 +5,7 @@
 <section class="ka-editorial">
   <div class="ka-editorial__inner{% if image_side == 'right' %} ka-editorial__inner--image-right{% endif %}">
 
-    <div class="ka-editorial__image scroll-trigger animate--fade-in">
+    <div class="ka-editorial__image ka-reveal">
       {%- if section.settings.image != blank -%}
         <img
           src="{{ section.settings.image | image_url: width: 1400 }}"
@@ -21,16 +21,16 @@
 
     <div class="ka-editorial__content">
       {%- if section.settings.eyebrow != blank -%}
-        <p class="ka-editorial__eyebrow scroll-trigger animate--fade-in">{{ section.settings.eyebrow }}</p>
+        <p class="ka-editorial__eyebrow ka-reveal">{{ section.settings.eyebrow }}</p>
       {%- endif -%}
       {%- if section.settings.heading != blank -%}
-        <h2 class="ka-editorial__title scroll-trigger animate--fade-in">{{ section.settings.heading }}</h2>
+        <h2 class="ka-editorial__title ka-reveal">{{ section.settings.heading }}</h2>
       {%- endif -%}
       {%- if section.settings.body != blank -%}
-        <p class="ka-editorial__body scroll-trigger animate--fade-in">{{ section.settings.body }}</p>
+        <p class="ka-editorial__body ka-reveal">{{ section.settings.body }}</p>
       {%- endif -%}
       {%- if section.settings.cta_label != blank and section.settings.cta_url != blank -%}
-        <a href="{{ section.settings.cta_url }}" class="ka-editorial__link scroll-trigger animate--fade-in">
+        <a href="{{ section.settings.cta_url }}" class="ka-editorial__link ka-reveal">
           {{ section.settings.cta_label }}
           <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
         </a>
