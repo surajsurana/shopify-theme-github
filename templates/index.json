@@ -23,119 +23,6 @@
         "show_scroll_hint": true
       }
     },
-    "ka-brand-statement": {
-      "type": "ka-brand-statement",
-      "settings": {
-        "eyebrow": "",
-        "quote": "<p>"Every length of silk, every stitch of zari — held to the light of the woman who will wear it."<\/p>",
-        "body": "We are a Mumbai atelier dedicated to the art of bridal dressing. Each piece begins as a conversation and ends as an heirloom — shaped by the woman, never imposed upon her.",
-        "cta_label": "",
-        "cta_url": ""
-      }
-    },
-    "ka-collections": {
-      "type": "ka-collections",
-      "settings": {
-        "eyebrow": "Current Season",
-        "heading": "The Collections",
-        "view_all_url": "/collections",
-        "card_1_name": "The Bloom Soirée",
-        "card_1_count": "18 Pieces",
-        "card_1_url": "/collections/the-bloom-soiree",
-        "card_2_name": "The Festive Edit",
-        "card_2_count": "24 Pieces",
-        "card_2_url": "/collections/the-festive-edit",
-        "card_3_name": "Chamakk",
-        "card_3_count": "16 Pieces",
-        "card_3_url": "/collections/chamak",
-        "card_4_name": "Barre Oblique",
-        "card_4_count": "12 Pieces",
-        "card_4_url": "/collections/barre-oblique",
-        "card_5_name": "New Arrivals",
-        "card_5_count": "Just Landed",
-        "card_5_url": "/collections/new-arrivals"
-      }
-    },
-    "ka-editorial": {
-      "type": "ka-editorial",
-      "settings": {
-        "image_side": "left",
-        "eyebrow": "Client Diaries",
-        "heading": "The bride before the moment — in her own words",
-        "body": "Our Client Diaries series captures the relationship between a woman and her wedding wardrobe — not as a transaction, but as a rite. Here, real brides speak about the garments that held them on the most important day of their lives.",
-        "cta_label": "Read the Stories",
-        "cta_url": "/pages/client-diaries"
-      }
-    },
-    "ka-craftsmanship": {
-      "type": "ka-craftsmanship",
-      "settings": {
-        "eyebrow": "The Atelier",
-        "heading": "Four centuries of craft in every garment",
-        "intro": "Our studio in Mumbai brings together master craftspeople from across India. Each piece is constructed by hand, through processes refined over generations.",
-        "step_1_title": "Hand Embroidery",
-        "step_1_desc": "Each piece is embroidered by hand — zari, zardozi, and thread-work applied stitch by stitch under natural light.",
-        "step_2_title": "Fabric Selection",
-        "step_2_desc": "We source silks, organzas, and velvets from Banaras, Kanchipuram and Surat — selecting only what passes the hand-feel test.",
-        "step_3_title": "Draping",
-        "step_3_desc": "Every silhouette begins on the body, not on paper. Our drapers work directly with the cloth until the fall is exactly right.",
-        "step_4_title": "Final Fitting",
-        "step_4_desc": "We insist on at least two in-person fittings. The garment is adjusted to the bride, not the other way around.",
-        "cta_label": "",
-        "cta_url": ""
-      }
-    },
-    "ka-reviews": {
-      "type": "ka-reviews",
-      "settings": {
-        "eyebrow": "Client Words",
-        "heading": "What our clients say",
-        "review_1_quote": "I have never felt more myself than in my K&A lehenga. They understood exactly what I wanted — and gave me something more beautiful than I had imagined.",
-        "review_1_name": "Neha Agarwal",
-        "review_1_meta": "Bride · November 2024 · Delhi",
-        "review_2_quote": "The attention to detail was extraordinary. Every fitting felt like they were building the garment around me as a person. Worth every rupee and every moment.",
-        "review_2_name": "Priya Sharma",
-        "review_2_meta": "Bride · March 2025 · Mumbai",
-        "review_3_quote": "I wore K&A for all four of my wedding events. Every outfit was magnificent. Guests are still talking about the reception lehenga. True artisanship.",
-        "review_3_name": "Ritu Kapoor",
-        "review_3_meta": "Client · January 2025 · Bangalore",
-        "aggregate_score": "4.9",
-        "aggregate_label": "Based on 200+ verified client reviews"
-      }
-    },
-    "ka-appointment": {
-      "type": "ka-appointment",
-      "settings": {
-        "eyebrow": "Mumbai Atelier",
-        "heading": "Begin your bridal story. Book a private appointment.",
-        "body": "Our studio appointments are intimate, unhurried, and completely personal. Meet Karishma and Ashita — and begin the journey toward your wedding wardrobe.",
-        "cta_label": "Request an Appointment",
-        "cta_url": "https://wa.me/919967543087",
-        "location": "Bandra West, Mumbai",
-        "hours": "Monday – Saturday, 10am – 7pm",
-        "contact": "+91 99675 43087"
-      }
-    },
-    "ka-newsletter": {
-      "type": "ka-newsletter",
-      "settings": {
-        "eyebrow": "Stay Close",
-        "heading": "Letters from the atelier",
-        "body": "New collections, behind-the-scenes from the studio, and invitations to private events — for those who follow closely.",
-        "placeholder": "Your email address",
-        "button_label": "Subscribe",
-        "privacy_note": "Curated, infrequent. We respect your inbox."
-      }
-    },
-    "ka-footer": {
-      "type": "ka-footer",
-      "settings": {
-        "tagline": "An atelier devoted to the Indian bridal woman — her beauty, her joy, her story. Every garment is a collaboration between craft and the woman who wears it.",
-        "instagram_url": "https://www.instagram.com/karishmaashita/",
-        "facebook_url": "https://www.facebook.com/karishmaashita/",
-        "youtube_url": "https://www.youtube.com/@karishmaashita"
-      }
-    },
     "a2f65b0f-09b7-480d-a296-1d9faa8b9b5c": {
       "type": "image-banner",
       "disabled": true,
@@ -281,6 +168,7 @@
     },
     "featured_collection_dMNC9G": {
       "type": "featured-collection",
+      "disabled": true,
       "name": "t:sections.featured-collection.presets.name",
       "settings": {
         "collection": "the-bloom-soiree",
@@ -727,6 +615,7 @@
         "832cbbd4-5b53-486e-9ab8-973cbc6c4194",
         "template--19140602724642__4453e5c0-996d-4ab0-897d-3f2c92d3c1d3-168767927128680408-1"
       ],
+      "disabled": true,
       "settings": {
         "title": "Collections",
         "heading_size": "h2",
@@ -761,6 +650,7 @@
         "k_google_reviews_importer_app_embeded_NEVr8w",
         "138b734f-858e-4a3f-831b-1a2f1933c7bf"
       ],
+      "disabled": true,
       "settings": {
         "include_margins": true
       }
@@ -798,6 +688,7 @@
         "template--19140602724642__e93cbc84-6524-42b4-99b8-61635cf833e6-1686839186284b5050-1",
         "template--19140602724642__e93cbc84-6524-42b4-99b8-61635cf833e6-1686839186284b5050-2"
       ],
+      "disabled": true,
       "settings": {
         "desktop_content_position": "center",
         "content_alignment": "center",
@@ -828,14 +719,6 @@
   },
   "order": [
     "ka-hero",
-    "ka-brand-statement",
-    "ka-collections",
-    "ka-editorial",
-    "ka-craftsmanship",
-    "ka-reviews",
-    "ka-appointment",
-    "ka-newsletter",
-    "ka-footer",
     "a2f65b0f-09b7-480d-a296-1d9faa8b9b5c",
     "custom_liquid_969pg7",
     "61e1d384-f0bd-4871-ae1e-ebc66782954b",
