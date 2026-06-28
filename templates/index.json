@@ -26,11 +26,11 @@
     "ka-brand-statement": {
       "type": "ka-brand-statement",
       "settings": {
-        "eyebrow": "Karishma & Ashita",
-        "quote": "<p>\"Every length of silk, every stitch of zari — held to the light of the woman who will wear it.\"</p>",
+        "eyebrow": "",
+        "quote": "<p>“Every length of silk, every stitch of zari — held to the light of the woman who will wear it.”<\/p>",
         "body": "We are a Mumbai atelier dedicated to the art of bridal dressing. Each piece begins as a conversation and ends as an heirloom — shaped by the woman, never imposed upon her.",
-        "cta_label": "Our Story",
-        "cta_url": "/pages/about"
+        "cta_label": "",
+        "cta_url": ""
       }
     },
     "ka-collections": {
