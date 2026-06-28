@@ -256,6 +256,9 @@
     {% endstyle %}
 
     {{ 'base.css' | asset_url | stylesheet_tag }}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,600;1,6..96,400;1,6..96,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
     {{ 'base-luxury.css' | asset_url | stylesheet_tag }}
     <link rel="stylesheet" href="{{ 'component-cart-items.css' | asset_url }}" media="print" onload="this.media='all'">
 
@@ -373,6 +376,17 @@
     {%- if settings.cart_type == 'drawer' -%}
       <script src="{{ 'cart-drawer.js' | asset_url }}" defer="defer"></script>
     {%- endif -%}
+
+  <script>
+    (function () {
+      var header = document.querySelector('.header-wrapper');
+      if (!header) return;
+      var onScroll = function () {
+        header.classList.toggle('scrolled', window.scrollY > 40);
+      };
+      window.addEventListener('scroll', onScroll, { passive: true });
+    })();
+  </script>
 
   <a
     href="https://wa.me/919967543087"

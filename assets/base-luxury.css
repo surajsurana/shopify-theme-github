@@ -83,9 +83,7 @@
   --ka-t-nav:     .8rem;
 }
 
-/* ---------- GOOGLE FONTS — loaded here so theme.liquid stays clean ---------- */
-/* Bodoni Moda (display) + Jost (sans) */
-@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap');
+/* Google Fonts are loaded via <link> tags in layout/theme.liquid for Shopify CDN compatibility */
 
 /* ---------- GLOBAL BASE STYLES ---------- */
 
@@ -341,4 +339,74 @@ h1, h2, h3, h4, h5, h6,
     right: 18px;
     padding: 12px 18px;
   }
+}
+
+/* ─── HEADER OVERRIDES ─────────────────────────────────────── */
+
+/* Make header background bone and sticky */
+.shopify-section-group-header-group {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header-wrapper {
+  background-color: var(--ka-canvas);
+  border-bottom: 1px solid var(--ka-line);
+  transition: background-color 0.35s var(--ka-ease), box-shadow 0.35s var(--ka-ease), border-color 0.35s var(--ka-ease);
+}
+
+/* Scrolled state — JS adds .scrolled to header-wrapper via window scroll event */
+.header-wrapper.scrolled {
+  background-color: rgba(250, 246, 240, 0.97);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom-color: transparent;
+  box-shadow: 0 1px 0 var(--ka-line);
+}
+
+/* Wordmark / shop name */
+.header__heading-link,
+.header__heading {
+  font-family: var(--ka-font-display) !important;
+  font-weight: 400 !important;
+  font-size: 1.05rem !important;
+  letter-spacing: 0.22em !important;
+  text-transform: uppercase !important;
+  color: var(--ka-ink) !important;
+}
+
+/* Wordmark subtitle via pseudo-element */
+.header__heading-link::after {
+  content: 'Bridal Couture · Mumbai';
+  display: block;
+  font-family: var(--ka-font-sans);
+  font-size: 0.6rem;
+  font-weight: 400;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--ka-ink-muted);
+  margin-top: 2px;
+}
+
+/* Nav links */
+.header__menu-item,
+.header__menu-item a,
+.header__active-menu-item {
+  font-family: var(--ka-font-sans) !important;
+  font-size: var(--ka-t-nav) !important;
+  letter-spacing: 0.16em !important;
+  text-transform: uppercase !important;
+  font-weight: 400 !important;
+  color: var(--ka-ink-soft) !important;
+}
+
+.header__menu-item:hover a,
+.header__menu-item a:hover {
+  color: var(--ka-ink) !important;
+}
+
+/* Icons (cart, search) */
+.header__icon svg {
+  color: var(--ka-ink-soft);
 }
