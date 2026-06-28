@@ -1,0 +1,313 @@
+/* =============================================================
+   KA HERO — Full-viewport hero section
+   Companion to sections/ka-hero.liquid
+   All values sourced from Prototypes/homepage-prototype.html
+   and base-luxury.css tokens. No hardcoded hex values except
+   rgba overlays which require numeric colour components.
+   ============================================================= */
+
+/* ── Keyframes ─────────────────────────────────────────────── */
+
+@keyframes ka-hero-image-reveal {
+  from { transform: scale(1.06); }
+  to   { transform: scale(1); }
+}
+
+@keyframes ka-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes ka-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes ka-scroll-pulse {
+  0%,  100% { opacity: 0.4; }
+  50%        { opacity: 1;   }
+}
+
+/* ── Section shell ─────────────────────────────────────────── */
+
+.ka-hero {
+  position: relative;
+  height: 100svh;
+  min-height: 560px;
+  max-height: 980px;
+  overflow: hidden;
+  background: var(--ka-noir);
+  /* Ensure hero sits below Dawn's sticky header (z-index 3 in Dawn) */
+  z-index: 1;
+}
+
+/* ── Background image ──────────────────────────────────────── */
+
+.ka-hero__image {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.ka-hero__image img,
+.ka-hero__image svg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  transform: scale(1.06);
+  animation: ka-hero-image-reveal 2s var(--ka-ease) forwards;
+}
+
+.ka-hero__placeholder {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ── Gradient overlay ──────────────────────────────────────── */
+/*
+   Prototype values (exact):
+   linear-gradient(to bottom,
+     rgba(22,18,14,0) 35%,
+     rgba(22,18,14,.35) 65%,
+     rgba(22,18,14,.72) 100%
+   )
+   rgba numerical values are unavoidable here — no CSS var can
+   hold them in a way that works inside rgba().
+*/
+
+.ka-hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(22, 18, 14, 0)    35%,
+    rgba(22, 18, 14, 0.35) 65%,
+    rgba(22, 18, 14, 0.72) 100%
+  );
+  pointer-events: none;
+}
+
+/* ── Text content block ────────────────────────────────────── */
+
+.ka-hero__content {
+  position: absolute;
+  bottom: clamp(48px, 8vw, 96px);
+  left: var(--ka-gutter);
+  right: var(--ka-gutter);
+  max-width: var(--ka-c-wide);
+  margin-inline: auto;
+}
+
+/* ── Eyebrow ───────────────────────────────────────────────── */
+
+.ka-hero__eyebrow {
+  display: inline-block;
+  font-family: var(--ka-font-sans);
+  font-size: var(--ka-t-eyebrow);
+  font-weight: 400;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--ka-champagne);
+  margin-bottom: var(--ka-s4);
+
+  /* Staggered entrance: delay 1 */
+  opacity: 0;
+  animation: ka-fade-up 0.8s 0.4s var(--ka-ease) forwards;
+}
+
+/* ── Heading ───────────────────────────────────────────────── */
+
+.ka-hero__title {
+  font-family: var(--ka-font-display) !important;
+  font-size: var(--ka-t-display);
+  font-weight: 400;
+  font-style: italic;
+  color: #fff;          /* Pure white — intentional, no ka token for pure white */
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  max-width: 720px;
+
+  /* Staggered entrance: delay 2 */
+  opacity: 0;
+  animation: ka-fade-up 0.9s 0.55s var(--ka-ease) forwards;
+}
+
+/* richtext block wraps content in <p>; strip its margin */
+.ka-hero__title p {
+  margin: 0;
+}
+
+/* ── Subheading / caption ──────────────────────────────────── */
+
+.ka-hero__caption {
+  margin-top: var(--ka-s5);
+  font-family: var(--ka-font-sans);
+  font-size: var(--ka-t-small);
+  font-weight: 300;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.72);
+
+  /* Staggered entrance: delay 3 */
+  opacity: 0;
+  animation: ka-fade-up 0.8s 0.7s var(--ka-ease) forwards;
+}
+
+/* ── CTA row ───────────────────────────────────────────────── */
+
+.ka-hero__cta {
+  margin-top: var(--ka-s6);
+  display: inline-flex;
+  gap: var(--ka-s6);
+  align-items: center;
+  flex-wrap: wrap;
+
+  /* Staggered entrance: delay 4 */
+  opacity: 0;
+  animation: ka-fade-up 0.8s 0.85s var(--ka-ease) forwards;
+}
+
+/* Primary button — champagne fill, noir text */
+.ka-hero__btn-primary {
+  display: inline-block;
+  padding: var(--ka-s3) var(--ka-s7);
+  background: var(--ka-champagne);
+  color: var(--ka-noir);
+  font-family: var(--ka-font-sans);
+  font-size: var(--ka-t-caption, 0.78rem);
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 1px solid var(--ka-champagne);
+  transition:
+    background var(--ka-dur-fast) var(--ka-ease),
+    color      var(--ka-dur-fast) var(--ka-ease);
+}
+
+.ka-hero__btn-primary:hover {
+  background: #fff;
+  border-color: #fff;
+  color: var(--ka-noir);
+}
+
+/* Secondary ghost link with arrow */
+.ka-hero__btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ka-s2);
+  font-family: var(--ka-font-sans);
+  font-size: var(--ka-t-caption, 0.78rem);
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  transition: color var(--ka-dur-fast) var(--ka-ease);
+}
+
+.ka-hero__btn-ghost:hover {
+  color: #fff;
+}
+
+.ka-hero__btn-ghost svg {
+  width: 16px;
+  height: 16px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.2;
+  flex-shrink: 0;
+  transition: transform var(--ka-dur-fast) var(--ka-ease);
+}
+
+.ka-hero__btn-ghost:hover svg {
+  transform: translateX(4px);
+}
+
+/* ── Scroll hint ───────────────────────────────────────────── */
+
+.ka-hero__scroll-hint {
+  position: absolute;
+  bottom: clamp(24px, 4vw, 40px);
+  right: var(--ka-gutter);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--ka-s2);
+
+  opacity: 0;
+  animation: ka-fade-in 1s 1.4s forwards;
+}
+
+.ka-hero__scroll-line {
+  width: 1px;
+  height: 48px;
+  background: linear-gradient(to bottom, transparent, var(--ka-champagne));
+  animation: ka-scroll-pulse 2s 2s infinite;
+}
+
+.ka-hero__scroll-label {
+  font-family: var(--ka-font-sans);
+  font-size: 0.6rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ka-champagne);
+  writing-mode: vertical-rl;
+  opacity: 0.7;
+}
+
+/* ── Mobile adjustments ────────────────────────────────────── */
+
+@media screen and (max-width: 599px) {
+  .ka-hero__title {
+    font-size: clamp(2rem, 8vw, 3rem);
+  }
+
+  .ka-hero__cta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--ka-s4);
+  }
+
+  /* Hide scroll hint on small screens — overlaps content */
+  .ka-hero__scroll-hint {
+    display: none;
+  }
+}
+
+/* ── Reduced motion ────────────────────────────────────────── */
+/*
+   All animations are CSS-only and degrade gracefully:
+   if prefers-reduced-motion is set, skip to final state
+   immediately so content is always visible.
+*/
+@media (prefers-reduced-motion: reduce) {
+  .ka-hero__image img,
+  .ka-hero__image svg {
+    animation: none;
+    transform: scale(1);
+  }
+
+  .ka-hero__eyebrow,
+  .ka-hero__title,
+  .ka-hero__caption,
+  .ka-hero__cta,
+  .ka-hero__scroll-hint {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+
+  .ka-hero__scroll-line {
+    animation: none;
+    opacity: 0.7;
+  }
+}

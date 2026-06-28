@@ -1,0 +1,175 @@
+{{ 'ka-hero.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign fetch_priority = 'high'
+  assign img = section.settings.image
+-%}
+
+<section
+  class="ka-hero"
+  id="KaHero-{{ section.id }}"
+  aria-label="{{ section.settings.eyebrow | default: 'Hero' | escape }}"
+>
+  {%- comment %} ── Background image ── {%- endcomment %}
+  <div class="ka-hero__image" aria-hidden="true">
+    {%- if img != blank -%}
+      {{
+        img
+        | image_url: width: 3840
+        | image_tag:
+          width: img.width,
+          height: img.height,
+          sizes: '100vw',
+          widths: '750, 1100, 1500, 2000, 2800, 3840',
+          fetchpriority: fetch_priority,
+          loading: 'eager',
+          alt: img.alt | default: section.settings.heading | escape
+      }}
+    {%- else -%}
+      {{ 'hero-apparel-1' | placeholder_svg_tag: 'placeholder-svg ka-hero__placeholder' }}
+    {%- endif -%}
+  </div>
+
+  {%- comment %} ── Gradient overlay ── {%- endcomment %}
+  <div class="ka-hero__overlay" aria-hidden="true"></div>
+
+  {%- comment %} ── Text content ── {%- endcomment %}
+  <div class="ka-hero__content">
+    {%- if section.settings.eyebrow != blank -%}
+      <span class="ka-hero__eyebrow">{{ section.settings.eyebrow | escape }}</span>
+    {%- endif -%}
+
+    {%- if section.settings.heading != blank -%}
+      <h1 class="ka-hero__title">{{ section.settings.heading }}</h1>
+    {%- endif -%}
+
+    {%- if section.settings.subheading != blank -%}
+      <p class="ka-hero__caption">{{ section.settings.subheading | escape }}</p>
+    {%- endif -%}
+
+    {%- if section.settings.cta_primary_label != blank or section.settings.cta_secondary_label != blank -%}
+      <div class="ka-hero__cta">
+        {%- if section.settings.cta_primary_label != blank -%}
+          <a
+            href="{{ section.settings.cta_primary_url | default: '#' }}"
+            class="ka-hero__btn-primary"
+          >
+            {{- section.settings.cta_primary_label | escape -}}
+          </a>
+        {%- endif -%}
+
+        {%- if section.settings.cta_secondary_label != blank -%}
+          <a
+            href="{{ section.settings.cta_secondary_url | default: '#' }}"
+            class="ka-hero__btn-ghost"
+          >
+            {{- section.settings.cta_secondary_label | escape -}}
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <line x1="5" y1="12" x2="19" y2="12"/>
+              <polyline points="12 5 19 12 12 19"/>
+            </svg>
+          </a>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+  </div>
+
+  {%- comment %} ── Scroll hint ── {%- endcomment %}
+  {%- if section.settings.show_scroll_hint -%}
+    <div class="ka-hero__scroll-hint" aria-hidden="true">
+      <div class="ka-hero__scroll-line"></div>
+      <span class="ka-hero__scroll-label">Scroll</span>
+    </div>
+  {%- endif -%}
+</section>
+
+{% schema %}
+{
+  "name": "KA Hero",
+  "tag": "section",
+  "class": "ka-hero-section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": "Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Background image"
+    },
+    {
+      "type": "header",
+      "content": "Text"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow label",
+      "default": "The Wedding Season Edit · 2025",
+      "info": "Small uppercase label above the heading"
+    },
+    {
+      "type": "richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "<p>Dressed for the<br>story she becomes</p>",
+      "info": "Use <em> tags for italic words. Renders as an h1."
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Bridal couture conceived in Mumbai, worn across the world"
+    },
+    {
+      "type": "header",
+      "content": "Primary CTA"
+    },
+    {
+      "type": "text",
+      "id": "cta_primary_label",
+      "label": "Button label",
+      "default": "Explore Collections"
+    },
+    {
+      "type": "url",
+      "id": "cta_primary_url",
+      "label": "Button link"
+    },
+    {
+      "type": "header",
+      "content": "Secondary CTA"
+    },
+    {
+      "type": "text",
+      "id": "cta_secondary_label",
+      "label": "Link label",
+      "default": "Book an Appointment"
+    },
+    {
+      "type": "url",
+      "id": "cta_secondary_url",
+      "label": "Link URL"
+    },
+    {
+      "type": "header",
+      "content": "Options"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_scroll_hint",
+      "label": "Show scroll indicator",
+      "default": true
+    }
+  ],
+  "presets": [
+    {
+      "name": "KA Hero"
+    }
+  ]
+}
+{% endschema %}
