@@ -204,15 +204,38 @@ h1, h2, h3, h4 {
 :root {
   --font-body-family:    'Jost', 'Helvetica Neue', Arial, sans-serif;
   --font-heading-family: 'Bodoni Moda', Didot, 'Times New Roman', serif;
-  /* Dawn reads background as RGB components; match --ka-canvas (#FAF6F0 = 250,246,240) */
-  --color-background: 250, 246, 240;
 }
 
-/* — Page canvas — body background comes from rgb(var(--color-background)) in Dawn — */
-body {
+/* — Page canvas —
+     Dawn outputs `--color-background` on both :root AND per-section color-scheme
+     classes (e.g. .color-background-1). Class selectors beat :root in specificity,
+     so we must target each scheme class explicitly.
+     RGB splits: #FAF6F0 = 250,246,240 | #F1EADF = 241,234,223 — */
+
+:root,
+.color-background-1 {
+  --color-background: 250, 246, 240; /* ka-canvas */
+}
+
+.color-background-2 {
+  --color-background: 241, 234, 223; /* ka-ivory */
+}
+
+/* Belt-and-suspenders: also set background-color directly in case a section
+   uses a hardcoded background rather than the CSS variable. */
+body,
+.color-background-1 {
   background-color: var(--ka-canvas) !important;
+}
+
+.color-background-2 {
+  background-color: var(--ka-ivory) !important;
+}
+
+/* — Body text — */
+body {
   color: var(--ka-ink-soft);
-  font-family: var(--ka-font-sans);
+  font-family: var(--ka-font-sans) !important;
   font-weight: 300;
 }
 
