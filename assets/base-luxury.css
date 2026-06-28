@@ -191,3 +191,81 @@ h1, h2, h3, h4 {
   border: none;
   margin: 0;
 }
+
+/* =============================================================
+   DAWN ELEMENT OVERRIDES
+   Maps --ka-* tokens onto Dawn's real elements.
+   Dawn uses RGB-component CSS variables set via Liquid, so we
+   override element styles directly rather than the variables.
+   ============================================================= */
+
+/* — Override Dawn's font variables so component-level usage inherits correctly — */
+:root {
+  --font-body-family:    'Jost', 'Helvetica Neue', Arial, sans-serif;
+  --font-heading-family: 'Bodoni Moda', Didot, 'Times New Roman', serif;
+}
+
+/* — Page canvas — */
+body {
+  background-color: var(--ka-canvas);
+  color: var(--ka-ink-soft);
+  font-family: var(--ka-font-sans);
+  font-weight: 300;
+}
+
+/* — Headings — */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--ka-font-display);
+  font-weight: 400;
+  color: var(--ka-ink);
+  line-height: 1.14;
+  letter-spacing: .002em;
+}
+
+/* — Buttons — Dawn uses .button for all CTAs — */
+.button,
+.shopify-challenge__button,
+.customer button {
+  background-color: var(--ka-noir) !important;
+  color: #F1EADF !important;
+  border-color: var(--ka-noir) !important;
+  border-radius: var(--ka-r) !important;
+  font-family: var(--ka-font-sans);
+  letter-spacing: .18em;
+  text-transform: uppercase;
+}
+
+.button:hover,
+.shopify-challenge__button:hover,
+.customer button:hover {
+  background-color: var(--ka-bronze-deep) !important;
+  border-color: var(--ka-bronze-deep) !important;
+}
+
+/* — Announcement bar — */
+.utility-bar {
+  background-color: var(--ka-noir);
+  color: var(--ka-champagne);
+}
+
+.announcement-bar,
+.announcement-bar__announcement {
+  background-color: var(--ka-noir);
+  color: var(--ka-champagne);
+}
+
+.announcement-bar__link,
+.announcement-bar__message {
+  color: var(--ka-champagne);
+}
+
+/* — Footer — */
+.footer {
+  background-color: var(--ka-noir);
+  color: #B3A994;
+}
+
+.footer-block__heading,
+.footer__heading {
+  color: var(--ka-champagne);
+}
