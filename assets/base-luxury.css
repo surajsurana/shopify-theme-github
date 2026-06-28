@@ -199,23 +199,27 @@ h1, h2, h3, h4 {
    override element styles directly rather than the variables.
    ============================================================= */
 
-/* — Override Dawn's font variables so component-level usage inherits correctly — */
+/* — Override Dawn's font CSS variables (set via Liquid in inline <style>).
+     Our external CSS loads after that block so these win in the cascade. — */
 :root {
   --font-body-family:    'Jost', 'Helvetica Neue', Arial, sans-serif;
   --font-heading-family: 'Bodoni Moda', Didot, 'Times New Roman', serif;
+  /* Dawn reads background as RGB components; match --ka-canvas (#FAF6F0 = 250,246,240) */
+  --color-background: 250, 246, 240;
 }
 
-/* — Page canvas — */
+/* — Page canvas — body background comes from rgb(var(--color-background)) in Dawn — */
 body {
-  background-color: var(--ka-canvas);
+  background-color: var(--ka-canvas) !important;
   color: var(--ka-ink-soft);
   font-family: var(--ka-font-sans);
   font-weight: 300;
 }
 
-/* — Headings — */
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--ka-font-display);
+/* — Headings — Dawn uses .h0–.h5 utility classes, NOT bare h1–h6 selectors — */
+h1, h2, h3, h4, h5, h6,
+.h0, .h1, .h2, .h3, .h4, .h5 {
+  font-family: var(--ka-font-display) !important;
   font-weight: 400;
   color: var(--ka-ink);
   line-height: 1.14;
