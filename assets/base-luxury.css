@@ -1,0 +1,193 @@
+/* =============================================================
+   KARISHMA & ASHITA — GLOBAL LUXURY DESIGN SYSTEM
+   base-luxury.css · v2.0
+   Source of truth: Prototypes/karishma-ashita-design-system.html
+   All values pulled verbatim from the spec. Do not edit freehand.
+   ============================================================= */
+
+/* ---------- DESIGN TOKENS ---------- */
+:root {
+
+  /* — Palette: Warm Bone, Ink & Antique Bronze — */
+  --ka-canvas:        #FAF6F0;  /* Bone — primary page canvas */
+  --ka-ivory:         #F1EADF;  /* Oat — alternating section */
+  --ka-blush:         #EBE2D5;  /* Almond — soft editorial section */
+  --ka-noir:          #16120E;  /* Espresso — dark sections / footer / primary */
+  --ka-noir-2:        #211C16;  /* Raised dark surface */
+  --ka-ink:           #1E1A16;  /* Ink — headings */
+  --ka-ink-soft:      #524A40;  /* Clove — body */
+  --ka-ink-mid:       #6F675B;  /* Stone — secondary text */
+  --ka-ink-muted:     #8F8674;  /* Taupe — meta / captions */
+
+  /* — The Metal — one muted thread, used sparingly — */
+  --ka-bronze:        #9C8259;  /* Antique Bronze — accent on light */
+  --ka-bronze-deep:   #7E673F;  /* Deeper metal for type on light */
+  --ka-bronze-soft:   #C4A981;  /* Soft metal */
+  --ka-champagne:     #C4A981;  /* Warm metal on dark surfaces */
+  --ka-metal-line:    #E1D6C4;  /* Gilt-bronze hairline */
+
+  /* — Lines / Borders — */
+  --ka-line:          rgba(30, 26, 22, .12);
+  --ka-line-strong:   rgba(30, 26, 22, .22);
+  --ka-line-on-dark:  rgba(196, 169, 129, .26);
+
+  /* — Spacing scale (8pt rhythm, couture-generous) — */
+  --ka-s1:   4px;
+  --ka-s2:   8px;
+  --ka-s3:   12px;
+  --ka-s4:   16px;
+  --ka-s5:   24px;
+  --ka-s6:   32px;
+  --ka-s7:   48px;
+  --ka-s8:   64px;
+  --ka-s9:   96px;
+  --ka-s10:  128px;
+  --ka-s11:  160px;
+  --ka-s12:  200px;
+
+  /* — Containers — */
+  --ka-c-wide:    1600px;
+  --ka-c:         1280px;
+  --ka-c-narrow:  1040px;
+  --ka-c-text:    680px;
+  --ka-gutter:    clamp(20px, 5vw, 64px);
+
+  /* — Radius — couture is architectural & sharp — */
+  --ka-r:     0px;
+  --ka-r-xs:  2px;
+
+  /* — Shadows — overlays only, never on cards — */
+  --ka-shadow-overlay: 0 28px 70px -28px rgba(22, 18, 14, .32);
+  --ka-shadow-soft:    0 16px 50px -30px rgba(22, 18, 14, .24);
+
+  /* — Motion — */
+  --ka-ease:      cubic-bezier(.16, 1, .3, 1);
+  --ka-ease-soft: cubic-bezier(.22, .61, .36, 1);
+  --ka-dur:       .6s;
+  --ka-dur-img:   .9s;
+  --ka-dur-fast:  .35s;
+
+  /* — Typography — */
+  --ka-font-display: 'Bodoni Moda', Didot, 'Times New Roman', serif;
+  --ka-font-sans:    'Jost', 'Helvetica Neue', Arial, sans-serif;
+
+  /* — Type scale — */
+  --ka-t-display: clamp(2.7rem, 5.8vw, 5.2rem);
+  --ka-t-h1:      clamp(2.1rem, 4vw, 3.2rem);
+  --ka-t-h2:      clamp(1.8rem, 3vw, 2.5rem);
+  --ka-t-h3:      clamp(1.35rem, 2vw, 1.75rem);
+  --ka-t-eyebrow: .72rem;
+  --ka-t-body-l:  1.15rem;
+  --ka-t-body:    1rem;
+  --ka-t-small:   .82rem;
+  --ka-t-nav:     .8rem;
+}
+
+/* ---------- GOOGLE FONTS — loaded here so theme.liquid stays clean ---------- */
+/* Bodoni Moda (display) + Jost (sans) */
+@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap');
+
+/* ---------- GLOBAL BASE STYLES ---------- */
+
+/* Font smoothing */
+body {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Images */
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* Links */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Buttons reset */
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+/* Lists */
+ul {
+  list-style: none;
+}
+
+/* ---------- TYPOGRAPHY BASE ---------- */
+
+h1, h2, h3, h4 {
+  font-family: var(--ka-font-display);
+  font-weight: 400;
+  color: var(--ka-ink);
+  line-height: 1.14;
+  letter-spacing: .002em;
+}
+
+/* ---------- UTILITY CLASSES ---------- */
+
+/* Eyebrow / overline label */
+.ka-eyebrow {
+  font-family: var(--ka-font-sans);
+  font-weight: 400;
+  font-size: var(--ka-t-eyebrow);
+  text-transform: uppercase;
+  letter-spacing: .34em;
+  color: var(--ka-bronze);
+  display: inline-block;
+}
+
+/* Editorial italic — collection names */
+.ka-script {
+  font-family: var(--ka-font-display);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--ka-bronze);
+  line-height: 1.1;
+  letter-spacing: .005em;
+}
+
+/* Lead paragraph */
+.ka-lead {
+  font-size: var(--ka-t-body-l);
+  color: var(--ka-ink-soft);
+  line-height: 1.8;
+  font-weight: 300;
+}
+
+/* Muted text */
+.ka-muted {
+  color: var(--ka-ink-muted);
+}
+
+/* Section background helpers */
+.ka-bg-ivory { background: var(--ka-ivory); }
+.ka-bg-blush  { background: var(--ka-blush); }
+.ka-bg-noir   { background: var(--ka-noir); color: #CFC6B6; }
+.ka-bg-noir h1,
+.ka-bg-noir h2,
+.ka-bg-noir h3,
+.ka-bg-noir h4 { color: #F1EADF; }
+
+/* Scroll-reveal animation base */
+.ka-reveal {
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity 1s var(--ka-ease), transform 1s var(--ka-ease);
+}
+.ka-reveal.in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Gilt hairline divider */
+.ka-divider {
+  height: 1px;
+  background: var(--ka-metal-line);
+  border: none;
+  margin: 0;
+}
