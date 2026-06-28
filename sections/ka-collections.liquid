@@ -80,7 +80,7 @@
               <p class="ka-collection-card__count">{{ section.settings[count_key] }}</p>
             {%- endif -%}
             <span class="ka-collection-card__cta">
-              Explore
+              {%- if forloop.index == 4 -%}Shop Now{%- else -%}Explore{%- endif -%}
               <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
             </span>
           </div>

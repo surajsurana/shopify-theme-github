@@ -17,7 +17,7 @@
     "ka-brand-statement": {
       "type": "ka-brand-statement",
       "settings": {
-        "eyebrow": "Karishma & Ashita",
+        "eyebrow": "",
         "quote": "<p>“Every length of silk, every stitch of zari — held to the light of the woman who will wear it.”<\/p>",
         "body": "We are a Mumbai atelier dedicated to the art of bridal dressing. Each piece begins as a conversation and ends as an heirloom — shaped by the woman, never imposed upon her.",
         "cta_label": "",
@@ -123,8 +123,8 @@
       "settings": {
         "tagline": "An atelier devoted to the Indian bridal woman — her beauty, her joy, her story. Every garment is a collaboration between craft and the woman who wears it.",
         "instagram_url": "https:\/\/www.instagram.com\/karishmaashita\/",
-        "facebook_url": "",
-        "youtube_url": ""
+        "facebook_url": "https://www.facebook.com/karishmaashita/",
+        "youtube_url": "https://www.youtube.com/@karishmaashita"
       }
     }
   },
