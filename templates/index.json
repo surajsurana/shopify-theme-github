@@ -548,6 +548,7 @@
     },
     "4453e5c0-996d-4ab0-897d-3f2c92d3c1d3": {
       "type": "collection-list",
+      "disabled": true,
       "blocks": {
         "featured_collection_KP4CjF": {
           "type": "featured_collection",
@@ -631,6 +632,7 @@
     },
     "1685867731575728de": {
       "type": "apps",
+      "disabled": true,
       "blocks": {
         "k_google_reviews_importer_app_embeded_NEVr8w": {
           "type": "shopify://apps/k-google-reviews-importer/blocks/app-embeded/d356cdc8-81d9-427a-96f3-78536845c525",
@@ -657,6 +659,7 @@
     },
     "e93cbc84-6524-42b4-99b8-61635cf833e6": {
       "type": "rich-text",
+      "disabled": true,
       "blocks": {
         "template--19140602724642__e93cbc84-6524-42b4-99b8-61635cf833e6-1686839186284b5050-0": {
           "type": "heading",
@@ -700,18 +703,21 @@
     },
     "1724318347a7e6f76a": {
       "type": "apps",
+      "disabled": true,
       "settings": {
         "include_margins": true
       }
     },
     "17745028559bd6255f": {
       "type": "apps",
+      "disabled": true,
       "settings": {
         "include_margins": true
       }
     },
     "17745448458ec399c6": {
       "type": "apps",
+      "disabled": true,
       "settings": {
         "include_margins": true
       }
